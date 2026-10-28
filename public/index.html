@@ -1205,7 +1205,7 @@ body.tv-mode .tv-exit-btn {
         </h3>
         <small style="color: var(--mut); display: flex; align-items: center; gap: 6px;">
           <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
-          <b>VoiceLab.uz</b> AI O'zbekiston milliy diktor ovozlari ulandi
+          <b>AI Ovoz Tizimi:</b> Madina & Sardor — 100% Bepul va Cheksiz
         </small>
       </div>
       <button class="modal-close" id="closeAnnouncementModal">&times;</button>
@@ -1251,7 +1251,7 @@ body.tv-mode .tv-exit-btn {
     <div style="margin-bottom: 12px;">
       <label class="field-label" for="announcementText">✍️ E'lon yoki tabrik matni:</label>
       <textarea id="announcementText" rows="4" placeholder="Masalan: Bugun maktabimiz matematika fani o'qituvchisi Dilnoza opa Aliyevaning tavallud ayyomi! Maktab ma'muriyati va jamoasi nomidan ustozimizni chin dildan muborakbod etamiz!"></textarea>
-      <small style="color: var(--mut); display: block; margin-top: 4px;">* Matn VoiceLab sun'iy intellekti orqali 2 soniyada jonli ovozga aylantiriladi.</small>
+      <small style="color: var(--mut); display: block; margin-top: 4px;">* Tanlangan AI ovozida bir zumda jonli va tiniq ovozga aylantiriladi.</small>
     </div>
 
     <!-- Intro chime toggle -->
@@ -2534,12 +2534,14 @@ async function requestTtsGeneration() {
     showTtsStatus("Iltimos, e'lon yoki tabrik matnini kiriting!", "error");
     return null;
   }
-  const voice = ttsVoiceSelect ? ttsVoiceSelect.value : 'voice_01J9NEUTRAL0000000000000001';
+  const voice = ttsVoiceSelect ? ttsVoiceSelect.value : 'madina';
+  const isVl = voice.startsWith('voice_');
   
-  showTtsStatus("VoiceLab AI orqali ovoz hosil qilinmoqda... Iltimos, kuting...", "info");
+  showTtsStatus(isVl ? "VoiceLab AI orqali ovoz hosil qilinmoqda..." : "⚡ Bepul AI (Madina/Sardor) orqali ovoz hosil qilinmoqda...", "info");
   
   try {
-    const res = await fetch('/api/tts', {
+    const apiEndpoint = (window.location.protocol === 'file:') ? 'http://localhost:3000/api/tts' : '/api/tts';
+    const res = await fetch(apiEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text, voice })
@@ -2550,7 +2552,7 @@ async function requestTtsGeneration() {
     try {
       data = JSON.parse(rawText);
     } catch (parseErr) {
-      throw new Error("Server xatoligi (" + res.status + "): " + rawText.substring(0, 100));
+      throw new Error("Server javobi (" + res.status + "): " + rawText.substring(0, 100));
     }
 
     if (!res.ok || !data.success) {
@@ -2560,11 +2562,16 @@ async function requestTtsGeneration() {
     if (data.note || data.isFallback) {
       showTtsStatus("ℹ️ " + (data.note || "Ovoz tayyor"), "info");
     } else {
-      showTtsStatus("Ovoz tayyor! (" + (data.cached ? "Keshdan yuklandi" : (data.engine === 'voicelab' ? "VoiceLab orqali" : "Bepul Madina/Sardor orqali")) + ")", "success");
+      const engineLabel = data.engine === 'voicelab' ? "VoiceLab" : "Bepul Madina/Sardor";
+      showTtsStatus("✅ Ovoz tayyor! (" + (data.cached ? "Keshdan yuklandi" : engineLabel + " orqali") + ")", "success");
     }
     return data.audioUrl;
   } catch (err) {
-    showTtsStatus("Xatolik yuz berdi: " + err.message, "error");
+    if (window.location.protocol === 'file:') {
+      showTtsStatus("⚠️ Faylni to'g'ridan-to'g'ri ochgansiz. Iltimos, brauzerda http://localhost:3000/ manziliga kiring yoki 'node server.js' ni yoqing!", "error");
+    } else {
+      showTtsStatus("Xatolik yuz berdi: " + err.message, "error");
+    }
     return null;
   }
 }
@@ -2647,7 +2654,8 @@ let voicesLoadedOnce = false;
 async function loadDynamicVoices() {
   if (voicesLoadedOnce || !ttsVoiceSelect) return;
   try {
-    const res = await fetch('/api/voices');
+    const apiEndpoint = (window.location.protocol === 'file:') ? 'http://localhost:3000/api/voices' : '/api/voices';
+    const res = await fetch(apiEndpoint);
     const data = await res.json();
     if (data.success && data.voices && data.voices.length > 0) {
       const vlVoices = data.voices.filter(v => v.engine === 'voicelab');
