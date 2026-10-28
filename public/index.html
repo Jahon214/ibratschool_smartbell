@@ -1227,8 +1227,12 @@ body.tv-mode .tv-exit-btn {
     <div style="margin-bottom: 14px;">
       <label class="field-label" for="ttsVoiceSelect">🎙 Ovozni tanlang:</label>
       <select id="ttsVoiceSelect" style="font-weight: 700;">
-        <optgroup label="🇺🇿 VoiceLab.uz (O'zbek Milliy AI Diktorlari)">
-          <option value="voice_01J9NEUTRAL0000000000000001" selected>Gulnoza (Tiniq va muvozanatli) — VoiceLab</option>
+        <optgroup label="⚡ Bepul va Cheksiz Ovozlar (Tavsiya etiladi)">
+          <option value="madina" selected>👩 Madina (O'zbekcha ayol) — 100% Bepul (Cheksiz)</option>
+          <option value="sardor">👨 Sardor (O'zbekcha erkak) — 100% Bepul (Cheksiz)</option>
+        </optgroup>
+        <optgroup label="🇺🇿 VoiceLab.uz (Balans bo'lishi kerak)">
+          <option value="voice_01J9NEUTRAL0000000000000001">Gulnoza (Tiniq va muvozanatli) — VoiceLab</option>
           <option value="voice_OBuMpAaB5iYCUZS0eCc9Fj3k">Firdavs Urinov (Rasmiy diktor) — VoiceLab</option>
           <option value="voice_f7179d1c-07ab-4b3d-b5be-84dcf2935388">Dilnoza (Velvet, muloyim) — VoiceLab</option>
           <option value="voice_xdQMoRJkjHbPIB-jounXzKq8">Sardor (Barqaror, aniq) — VoiceLab</option>
@@ -1239,10 +1243,6 @@ body.tv-mode .tv-exit-btn {
           <option value="voice_M-p5iz9z_kPWNm_C0cFqbC6X">Abdulhay Otaxo'jayev (Piter Parker) — VoiceLab</option>
           <option value="voice_8bae02c6-d078-4757-9d62-0fce6da23cf7">Amir (Ertakchi hikoyachi) — VoiceLab</option>
           <option value="voice_2QZX3LFMkNO0lNyrOZ-WwJxK">Xurshid (Jonli erkak ovozi) — VoiceLab</option>
-        </optgroup>
-        <optgroup label="⚡ Microsoft Edge Neural (100% Bepul Zaxira)">
-          <option value="madina">Madina (Edge Neural) — Bepul</option>
-          <option value="sardor">Sardor (Edge Neural) — Bepul</option>
         </optgroup>
       </select>
     </div>
@@ -2557,7 +2557,11 @@ async function requestTtsGeneration() {
       throw new Error(data.error || "Ovoz yaratib bo'lmadi");
     }
     cachedGeneratedAudioUrl = data.audioUrl;
-    showTtsStatus("Ovoz tayyor! (" + (data.cached ? "Keshdan yuklandi" : "VoiceLab orqali yaratildi") + ")", "success");
+    if (data.note || data.isFallback) {
+      showTtsStatus("ℹ️ " + (data.note || "Ovoz tayyor"), "info");
+    } else {
+      showTtsStatus("Ovoz tayyor! (" + (data.cached ? "Keshdan yuklandi" : (data.engine === 'voicelab' ? "VoiceLab orqali" : "Bepul Madina/Sardor orqali")) + ")", "success");
+    }
     return data.audioUrl;
   } catch (err) {
     showTtsStatus("Xatolik yuz berdi: " + err.message, "error");
@@ -2650,17 +2654,17 @@ async function loadDynamicVoices() {
       const edgeVoices = data.voices.filter(v => v.engine === 'edge');
       
       let html = '';
-      if (vlVoices.length > 0) {
-        html += '<optgroup label="🇺🇿 VoiceLab.uz (O\'zbek Milliy AI Diktorlari)">';
-        vlVoices.forEach(v => {
-          const selected = (v.id === 'voice_01J9NEUTRAL0000000000000001') ? 'selected' : '';
+      if (edgeVoices.length > 0) {
+        html += '<optgroup label="⚡ Bepul va Cheksiz Ovozlar (Tavsiya etiladi)">';
+        edgeVoices.forEach(v => {
+          const selected = (v.id === 'madina') ? 'selected' : '';
           html += `<option value="${v.id}" ${selected}>${v.name}</option>`;
         });
         html += '</optgroup>';
       }
-      if (edgeVoices.length > 0) {
-        html += '<optgroup label="⚡ Microsoft Edge Neural (100% Bepul Zaxira)">';
-        edgeVoices.forEach(v => {
+      if (vlVoices.length > 0) {
+        html += '<optgroup label="🇺🇿 VoiceLab.uz (Balans bo\'lishi kerak)">';
+        vlVoices.forEach(v => {
           html += `<option value="${v.id}">${v.name}</option>`;
         });
         html += '</optgroup>';

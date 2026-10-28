@@ -223,22 +223,30 @@ const server = http.createServer(async (req, res) => {
           });
         } catch (vlErr) {
           console.error('VoiceLab generation failed, falling back to Edge Neural:', vlErr.message);
-          // Fallback to Edge Neural if VoiceLab error happens
+          // Fallback to Edge Neural if VoiceLab error happens (e.g. 402 insufficient credits)
           try {
-            await generateEdgeTtsAudio(text, 'madina', cacheFilePath);
+            const edgeFallbackName = getCacheFilename('edge', 'madina', text);
+            const edgeFallbackPath = path.join(CACHE_DIR, edgeFallbackName);
+            await generateEdgeTtsAudio(text, 'madina', edgeFallbackPath);
             return sendJsonResponse(res, 200, {
               success: true,
-              audioUrl: `/audio/tts_cache/${cacheFileName}`,
+              audioUrl: `/audio/tts_cache/${edgeFallbackName}`,
               cached: false,
               engine: 'edge_fallback',
               voice: 'madina',
-              note: `VoiceLab xatoligi sababli Madina ovoziga o'tkazildi: ${vlErr.message}`,
+              isFallback: true,
+              note: "VoiceLab balansi tugagani (402) sababli bepul Madina ovoziga o'tkazildi",
               text: text
             });
           } catch (fbErr) {
-            return sendJsonResponse(res, 500, {
+            console.error('Edge fallback failed as well:', fbErr);
+            const isPayment = (vlErr.status === 402 || (vlErr.message && vlErr.message.includes('402')));
+            const errMsg = isPayment
+              ? "VoiceLab hisobingizda balans tugagan (402 Payment Required). Ovoz ro'yxatidan bepul 'Madina' yoki 'Sardor' ovozini tanlang!"
+              : `VoiceLab xatoligi: ${vlErr.message}`;
+            return sendJsonResponse(res, 400, {
               success: false,
-              error: `VoiceLab xatoligi: ${vlErr.message}`
+              error: errMsg
             });
           }
         }
