@@ -2,12 +2,6 @@
   "version": 2,
   "name": "ibratschool-smartbell",
   "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/server.js"
-    }
-  ],
   "headers": [
     {
       "source": "/audio/(.*)",
