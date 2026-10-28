@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+Thumbs.db
+audio/tts_cache/*.mp3
+!audio/tts_cache/.gitkeep

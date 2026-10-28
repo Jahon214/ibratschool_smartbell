@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "ibratschool-smartbell",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    }
+  ]
+}

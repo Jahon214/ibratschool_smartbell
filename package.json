@@ -1,0 +1,13 @@
+{
+  "name": "ibratschool-smartbell",
+  "version": "1.0.0",
+  "description": "Aqlli Maktab Qo'ng'irog'i va VoiceLab AI Ovozli E'lonlar Tizimi (Ibrat School)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@voicelab/sdk": "^0.1.0",
+    "msedge-tts": "^2.1.1"
+  }
+}
