@@ -2544,8 +2544,16 @@ async function requestTtsGeneration() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text, voice })
     });
-    const data = await res.json();
-    if (!data.success) {
+    
+    let data;
+    const rawText = await res.text();
+    try {
+      data = JSON.parse(rawText);
+    } catch (parseErr) {
+      throw new Error("Server xatoligi (" + res.status + "): " + rawText.substring(0, 100));
+    }
+
+    if (!res.ok || !data.success) {
       throw new Error(data.error || "Ovoz yaratib bo'lmadi");
     }
     cachedGeneratedAudioUrl = data.audioUrl;
