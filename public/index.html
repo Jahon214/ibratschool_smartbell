@@ -1,0 +1,2684 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aqlli Maktab Qo'ng'irog'i</title>
+<style>
+/* ========================================================
+   AQLLI MAKTAB QO'NG'IROG'I — PROFESSIONAL DIZAYN TIZIMI
+   ======================================================== */
+:root {
+  --ac: #6366f1;
+  --ac2: #8b5cf6;
+  --ac3: #06b6d4;
+  --ok: #10b981;
+  --wr: #f59e0b;
+  --er: #ef4444;
+  --lunch: #059669;
+  --tea: #ec4899;
+  --hw: #0284c7;
+
+  /* Dark theme (default) */
+  --bg: #070b19;
+  --bg-gradient: radial-gradient(800px 500px at 90% -10%, rgba(99,102,241,0.28), transparent 60%),
+                 radial-gradient(700px 500px at -10% 20%, rgba(139,92,246,0.22), transparent 60%),
+                 radial-gradient(600px 450px at 50% 110%, rgba(6,182,212,0.15), transparent 60%);
+  --card: rgba(17, 24, 48, 0.82);
+  --card-border: rgba(140, 155, 255, 0.18);
+  --ink: #f1f5f9;
+  --ink-secondary: #cbd5e1;
+  --mut: #8b9bb4;
+  --line: rgba(140, 155, 255, 0.14);
+  --chip-bg: rgba(99, 102, 241, 0.08);
+  --input-bg: rgba(15, 23, 42, 0.7);
+  --table-hover: rgba(99, 102, 241, 0.1);
+  --active-row: linear-gradient(90deg, rgba(99, 102, 241, 0.35), rgba(139, 92, 246, 0.18));
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f4f6fc;
+  --bg-gradient: radial-gradient(800px 500px at 90% -10%, rgba(99,102,241,0.14), transparent 60%),
+                 radial-gradient(700px 500px at -10% 20%, rgba(139,92,246,0.1), transparent 60%),
+                 radial-gradient(600px 450px at 50% 110%, rgba(6,182,212,0.08), transparent 60%);
+  --card: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(99, 102, 241, 0.14);
+  --ink: #0f172a;
+  --ink-secondary: #334155;
+  --mut: #64748b;
+  --line: rgba(203, 213, 225, 0.8);
+  --chip-bg: rgba(99, 102, 241, 0.06);
+  --input-bg: #ffffff;
+  --table-hover: rgba(99, 102, 241, 0.06);
+  --active-row: linear-gradient(90deg, rgba(99, 102, 241, 0.18), rgba(139, 92, 246, 0.08));
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 60px;
+}
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 16px 20px 40px;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 22px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  flex-wrap: wrap;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--ac), var(--ac2) 65%, var(--ac3));
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  box-shadow: 0 8px 24px -4px rgba(99, 102, 241, 0.6);
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.logo-icon:hover { transform: scale(1.05); }
+
+.logo-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--ink), var(--ink-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.logo-desc {
+  font-size: 12px;
+  color: var(--mut);
+  font-weight: 500;
+  display: block;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 9px 16px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, var(--ac), var(--ac2));
+  box-shadow: 0 6px 18px -4px rgba(99, 102, 241, 0.5);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  user-select: none;
+}
+.btn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 10px 24px -4px rgba(99, 102, 241, 0.65);
+}
+.btn:active { transform: translateY(0) scale(0.98); }
+
+.btn.ghost {
+  background: var(--chip-bg);
+  color: var(--ink);
+  border: 1px solid var(--card-border);
+  box-shadow: none;
+}
+.btn.ghost:hover {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: var(--ac);
+}
+
+.btn.success {
+  background: linear-gradient(135deg, var(--ok), #059669);
+  box-shadow: 0 6px 18px -4px rgba(16, 185, 129, 0.5);
+}
+.btn.warning {
+  background: linear-gradient(135deg, var(--wr), #ea580c);
+  box-shadow: 0 6px 18px -4px rgba(245, 158, 11, 0.5);
+}
+.btn.danger {
+  background: linear-gradient(135deg, var(--er), #dc2626);
+  box-shadow: 0 6px 18px -4px rgba(239, 68, 68, 0.5);
+}
+.btn.sm {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+/* Audio warning bar */
+.audio-warn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.12));
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  font-weight: 600;
+  font-size: 14px;
+  animation: pulseGlow 2s infinite alternate;
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 rgba(245, 158, 11, 0); }
+  100% { box-shadow: 0 0 16px rgba(245, 158, 11, 0.35); }
+}
+
+/* Sound Cards Box */
+.sound-badge-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.sound-badge-card {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.15s;
+}
+.sound-badge-card:hover {
+  border-color: var(--ac);
+}
+.sound-badge-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+  font-weight: 800;
+}
+.sound-badge-desc {
+  font-size: 12.5px;
+  color: var(--ink-secondary);
+  line-height: 1.4;
+}
+.sound-badge-desc i {
+  color: var(--mut);
+  font-style: italic;
+}
+
+/* Main Grid Layout */
+.grid-main {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+@media (max-width: 960px) {
+  .grid-main { grid-template-columns: 1fr; }
+}
+
+/* Card */
+.card {
+  background: var(--card);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s;
+  position: relative;
+}
+.card:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mut);
+}
+.card-title span.badge-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+}
+.card-title span.badge-dot::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ac), var(--ac3));
+  box-shadow: 0 0 10px var(--ac3);
+}
+
+/* Hero Section (Live Clock & Status) */
+.hero-box {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.ring-container {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  flex: none;
+  filter: drop-shadow(0 0 24px rgba(99, 102, 241, 0.4));
+}
+.ring-container svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.ring-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+}
+.live-clock {
+  font-size: 42px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, var(--ink), var(--ink-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+.live-date {
+  font-size: 13px;
+  color: var(--mut);
+  font-weight: 600;
+  margin-top: 6px;
+  text-transform: capitalize;
+}
+
+.status-details {
+  flex: 1;
+  min-width: 220px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--mut);
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.4);
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+.pill::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  animation: blinkDot 1.4s infinite;
+}
+@keyframes blinkDot {
+  50% { opacity: 0.25; transform: scale(0.7); }
+}
+
+.pill.anthem { background: linear-gradient(135deg, #059669, #0284c7); }
+.pill.lesson { background: linear-gradient(135deg, var(--ac), var(--ac2)); }
+.pill.break { background: linear-gradient(135deg, var(--wr), #ea580c); }
+.pill.lunch { background: linear-gradient(135deg, var(--lunch), #10b981); }
+.pill.tea { background: linear-gradient(135deg, var(--tea), #f43f5e); }
+.pill.hw { background: linear-gradient(135deg, var(--hw), #38bdf8); }
+.pill.done { background: linear-gradient(135deg, #64748b, #475569); }
+
+.status-headline {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.status-sub {
+  color: var(--mut);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Quick Stats Chips */
+.chips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+.chip {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+}
+.chip small {
+  display: block;
+  font-size: 11px;
+  color: var(--mut);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.chip b {
+  font-size: 17px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+/* Proportional Timeline Bar */
+.timeline-bar-wrapper {
+  margin-top: 22px;
+  position: relative;
+}
+.timeline-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mut);
+  margin-bottom: 6px;
+}
+.timeline-bar {
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  gap: 3px;
+  position: relative;
+  overflow: visible;
+  padding: 3px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--line);
+}
+.tl-item {
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.15s;
+  cursor: pointer;
+  user-select: none;
+}
+.tl-item:hover {
+  transform: translateY(-2px);
+  z-index: 3;
+}
+.tl-item.lesson { background: linear-gradient(135deg, var(--ac), var(--ac2)); }
+.tl-item.break { background: linear-gradient(135deg, var(--wr), #ea580c); opacity: 0.9; }
+.tl-item.lunch { background: linear-gradient(135deg, var(--lunch), #10b981); }
+.tl-item.tea { background: linear-gradient(135deg, var(--tea), #f43f5e); }
+.tl-item.hw { background: linear-gradient(135deg, var(--hw), #38bdf8); }
+
+.tl-needle {
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  width: 4px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 0 0 2px #ff3b5c, 0 0 16px #ff3b5c;
+  pointer-events: none;
+  z-index: 10;
+  transition: left 0.3s linear;
+}
+
+/* Table Design */
+.table-scroll {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  margin-top: 10px;
+}
+table.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  text-align: left;
+}
+table.schedule-table th {
+  padding: 10px 14px;
+  background: var(--chip-bg);
+  color: var(--mut);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--line);
+}
+table.schedule-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  vertical-align: middle;
+}
+table.schedule-table tr:hover td {
+  background: var(--table-hover);
+}
+table.schedule-table tr.active-period td {
+  background: var(--active-row);
+  font-weight: 700;
+}
+table.schedule-table tr.active-period td:first-child {
+  border-left: 4px solid var(--ac);
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 12px;
+  color: #fff;
+  white-space: nowrap;
+}
+.badge-tag.lesson { background: linear-gradient(135deg, var(--ac), var(--ac2)); }
+.badge-tag.lunch { background: linear-gradient(135deg, var(--lunch), #10b981); }
+.badge-tag.tea { background: linear-gradient(135deg, var(--tea), #f43f5e); }
+.badge-tag.hw { background: linear-gradient(135deg, var(--hw), #38bdf8); }
+.badge-tag.break { background: linear-gradient(135deg, var(--wr), #ea580c); font-size: 11px; }
+
+/* Form inputs & controls */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 12px;
+}
+label.field-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--mut);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+input[type="text"],
+input[type="number"],
+input[type="time"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--input-bg);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.15s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--ac);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--ac);
+  cursor: pointer;
+}
+
+/* Day selector pills */
+.days-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.day-btn {
+  flex: 1;
+  min-width: 40px;
+  padding: 9px 0;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--input-bg);
+  color: var(--mut);
+  font-weight: 700;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.day-btn.active {
+  background: linear-gradient(135deg, var(--ac), var(--ac2));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.6);
+}
+
+/* Event Items */
+.event-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  border: 1px solid var(--line);
+  background: var(--chip-bg);
+  font-size: 13px;
+  transition: all 0.15s;
+}
+.event-item:hover { border-color: var(--ac); }
+.event-item.past { opacity: 0.5; }
+.event-item.next-event {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: var(--ac);
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.25);
+}
+.event-item b {
+  font-variant-numeric: tabular-nums;
+  color: var(--ac);
+  font-size: 13.5px;
+}
+.event-item span.desc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.event-item span.seq-badge {
+  font-size: 11px;
+  color: var(--mut);
+}
+
+.scroll-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.scroll-list::-webkit-scrollbar { width: 6px; }
+.scroll-list::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+
+/* Secondary 2-column grid */
+.grid-secondary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+@media (max-width: 480px) {
+  .grid-secondary { grid-template-columns: 1fr; }
+}
+
+.quick-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* Toast notification */
+.toast-notice {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translate(-50%, 120px);
+  background: linear-gradient(135deg, var(--ok), var(--ac3));
+  color: #04131e;
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+.toast-notice.show {
+  transform: translate(-50%, 0);
+}
+
+.bell-ring-active {
+  animation: shakeBell 0.28s infinite alternate;
+}
+@keyframes shakeBell {
+  0% { transform: rotate(-16deg) scale(1.1); }
+  100% { transform: rotate(16deg) scale(1.1); }
+}
+
+/* ========================================================
+   TV / FULLSCREEN KIOSK MODE
+   ======================================================== */
+body.tv-mode {
+  background: #050814;
+  overflow-x: hidden;
+  padding-bottom: 0;
+}
+body.tv-mode header,
+body.tv-mode .grid-main > div:last-child,
+body.tv-mode .grid-secondary,
+body.tv-mode .audio-warn {
+  display: none !important;
+}
+body.tv-mode .container {
+  max-width: 100vw;
+  padding: 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+body.tv-mode .grid-main {
+  grid-template-columns: 1fr;
+  max-width: 1300px;
+  margin: auto;
+  width: 100%;
+}
+body.tv-mode .card {
+  padding: 32px;
+  border-radius: 28px;
+}
+body.tv-mode .live-clock {
+  font-size: 68px;
+}
+body.tv-mode .live-date {
+  font-size: 18px;
+}
+body.tv-mode .ring-container {
+  width: 280px;
+  height: 280px;
+}
+body.tv-mode .status-headline {
+  font-size: 44px;
+}
+body.tv-mode .status-sub {
+  font-size: 20px;
+}
+body.tv-mode .pill {
+  font-size: 16px;
+  padding: 8px 20px;
+}
+.tv-exit-btn {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+body.tv-mode .tv-exit-btn {
+  display: inline-flex;
+}
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 16px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.modal-header h3 { font-size: 18px; font-weight: 800; }
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--mut);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.preset-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.rule-tag {
+  background: rgba(99, 102, 241, 0.16);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  color: var(--ink);
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Exit TV button -->
+  <button class="btn warning tv-exit-btn" id="exitTvBtn">📺 TV rejimidan chiqish (Esc)</button>
+
+  <!-- Sticky Top Header -->
+  <header>
+    <div class="logo-area">
+      <div class="logo-icon" id="bellLogoIcon" title="Maktab qo'ng'irog'i">🔔</div>
+      <div>
+        <div class="logo-title">Aqlli Qo'ng'iroq</div>
+        <small class="logo-desc">Maktab qo'ng'iroqlari va dars jadvali tizimi</small>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn primary" id="announcementModalBtn" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); color: #fff; border: none; font-weight: 700; box-shadow: 0 4px 14px rgba(236,72,153,0.35);">📢 E'lon & Tabrik</button>
+      <button class="btn ghost" id="tvToggleBtn" title="Katta ekranda namoyish qilish">📺 TV rejimi</button>
+      <button class="btn ghost" id="muteToggleBtn">🔔 Ovoz bor</button>
+      <button class="btn ghost" id="themeToggleBtn">🌓 Mavzu</button>
+      <button class="btn success" id="audioUnlockBtn">🔊 Ovozni faollashtirish</button>
+    </div>
+  </header>
+
+  <!-- Audio unlock banner -->
+  <div class="audio-warn" id="audioWarnBanner">
+    <span>🔇 <b>Muhim:</b> Brauzer qo'ng'iroqlarni o'z vaqtida chala olishi uchun bir marta ovozni yoqib qo'ying.</span>
+    <button class="btn success" onclick="unlockAudioEngine()">🔊 Ovozni yoqish</button>
+  </div>
+
+  <!-- Main Grid: Hero Status & Schedule on Left, Settings on Right -->
+  <div class="grid-main">
+    <!-- Left Column: Live Status & Schedule Table -->
+    <div>
+      <!-- Live Clock & Status Card -->
+      <div class="card">
+        <div class="card-title">
+          <span class="badge-dot">Hozirgi holat</span>
+          <span id="systemModeTag" style="color: var(--ac); font-weight: 700;">Real vaqt</span>
+        </div>
+
+        <div class="hero-box">
+          <!-- Circular Progress Ring -->
+          <div class="ring-container">
+            <svg viewBox="0 0 230 230">
+              <defs>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#6366f1"/>
+                  <stop offset="50%" stop-color="#8b5cf6"/>
+                  <stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+              </defs>
+              <circle cx="115" cy="115" r="98" fill="none" stroke="var(--line)" stroke-width="14"/>
+              <circle id="progressCircle" cx="115" cy="115" r="98" fill="none" stroke="url(#ringGrad)" stroke-width="14" stroke-linecap="round" stroke-dasharray="615.75" stroke-dashoffset="615.75"/>
+            </svg>
+            <div class="ring-inner">
+              <div class="live-clock" id="clockDisplay">00:00:00</div>
+              <div class="live-date" id="dateDisplay">Dushanba, 1-sentabr</div>
+            </div>
+          </div>
+
+          <!-- Status texts -->
+          <div class="status-details">
+            <span class="pill lesson" id="statusPill">Kutilmoqda</span>
+            <div class="status-headline" id="statusHeadline">Darslar jadvali</div>
+            <div class="status-sub" id="statusSub">Tizim yuklanmoqda...</div>
+          </div>
+        </div>
+
+        <!-- Metric Chips -->
+        <div class="chips-grid" id="statsChips">
+          <div class="chip">
+            <small>Madhiya vaqti</small>
+            <b id="chipAnthemTime" style="color: var(--ok);">08:59</b>
+          </div>
+          <div class="chip">
+            <small>1-dars boshlanishi</small>
+            <b id="chipStartTime">09:00</b>
+          </div>
+          <div class="chip">
+            <small>Darslar tugashi</small>
+            <b id="chipEndTime">17:00</b>
+          </div>
+          <div class="chip">
+            <small>Keyingi qo'ng'iroq</small>
+            <b id="chipNextBell" style="color: var(--ac3);">--:--</b>
+          </div>
+        </div>
+
+        <!-- Proportional Timeline bar -->
+        <div class="timeline-bar-wrapper">
+          <div class="timeline-labels">
+            <span>08:59 Madhiya</span>
+            <span>09:00 (1-soat)</span>
+            <span>12:30 Tushlik (35 daq)</span>
+            <span>15:40 To'lma choy (20 daq)</span>
+            <span>17:00 Yakun</span>
+          </div>
+          <div class="timeline-bar" id="timelineBar">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule Table Card -->
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-title">
+          <span class="badge-dot">Bugungi dars va mashg'ulotlar jadvali</span>
+          <div>
+            <button class="btn ghost sm" id="editScheduleBtn">✏️ Tahrirlash</button>
+            <button class="btn ghost sm" id="resetDefaultBtn">🔄 Standart</button>
+          </div>
+        </div>
+
+        <div class="table-scroll">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">#</th>
+                <th>Mashg'ulot / Dars</th>
+                <th>Vaqti</th>
+                <th>Davomiyligi</th>
+                <th>Keyingi tanaffus</th>
+                <th>Holat</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Settings & 4 Custom Voice Rules -->
+    <div>
+      <!-- Audio System Card (Qo'ng'iroqlar va Ovozlar) -->
+      <div class="card">
+        <div class="card-title">
+          <span class="badge-dot">Siz yuklagan maxsus audio e'lonlar</span>
+        </div>
+
+        <!-- 4 Custom Voices List -->
+        <div class="sound-badge-box">
+          <!-- 1-Voice: Har bir tanaffus -->
+          <div class="sound-badge-card" style="border-color: rgba(99, 102, 241, 0.45);">
+            <div class="sound-badge-title">
+              <span>🔔 1. Har bir tanaffus boshlanganda</span>
+              <button class="btn ghost sm" id="testVoice1Btn">▶ Sinash</button>
+            </div>
+            <div class="sound-badge-desc">
+              <i>"Hurmatli o'quvchilar, tanaffus vaqti boshlandi. Iltimos, odob saqlang."</i>
+            </div>
+            <div style="font-size:11px; color:var(--mut);">
+              <span class="rule-tag">Ketma-ketlik</span> Qo'ng'iroq ➔ Freesound ➔ 1-Voice (Tanaffus tugaganda: faqat qo'ng'iroq)
+            </div>
+          </div>
+
+          <!-- 2-Voice: Tushlik boshlanishi (12:30) -->
+          <div class="sound-badge-card" style="border-color: rgba(16, 185, 129, 0.45);">
+            <div class="sound-badge-title">
+              <span>🍲 2. Tushlik boshlanganda (12:30 da)</span>
+              <button class="btn ghost sm" id="testVoice2Btn">▶ Sinash</button>
+            </div>
+            <div class="sound-badge-desc">
+              <i>"Hurmatli o'quvchilar va ustozlar! To'rtinchi dars yakunlandi. Tushlik vaqti boshlandi. Barchaga yoqimli ishtaha tilaymiz!"</i>
+            </div>
+            <div style="font-size:11px; color:var(--mut);">
+              <span class="rule-tag">Ketma-ketlik</span> Qo'ng'iroq ➔ Freesound ➔ 2-Voice
+            </div>
+          </div>
+
+          <!-- 3-Voice: Tushlik tugashi (13:05) -->
+          <div class="sound-badge-card" style="border-color: rgba(6, 182, 212, 0.45);">
+            <div class="sound-badge-title">
+              <span>⏰ 3. Tushlik tugaganda (13:05 da)</span>
+              <button class="btn ghost sm" id="testVoice3Btn">▶ Sinash</button>
+            </div>
+            <div class="sound-badge-desc">
+              <i>"Hurmatli o'quvchilar, tushlik vaqti tugadi. Beshinchi dars boshlandi. O'quvchilar xonalarga kiring."</i>
+            </div>
+            <div style="font-size:11px; color:var(--mut);">
+              <span class="rule-tag">Ketma-ketlik</span> Qo'ng'iroq ➔ Freesound ➔ 3-Voice
+            </div>
+          </div>
+
+          <!-- 4-Voice: Kun yakuni (17:00) -->
+          <div class="sound-badge-card" style="border-color: rgba(236, 72, 153, 0.45);">
+            <div class="sound-badge-title">
+              <span>🎉 4. Uyga vazifa tugaganda (17:00 da)</span>
+              <button class="btn ghost sm" id="testVoice4Btn">▶ Sinash</button>
+            </div>
+            <div class="sound-badge-desc">
+              <i>"Hurmatli o'quvchilar va ustozlar! Bugungi darslar va mashg'ulotlar yakunlandi. Barchaga maroqli dam olish tilaymiz. Ertaga ko'rishguncha xayr!"</i>
+            </div>
+            <div style="font-size:11px; color:var(--mut);">
+              <span class="rule-tag">Ketma-ketlik</span> Qo'ng'iroq ➔ Freesound ➔ 4-Voice (Kun yakuni)
+            </div>
+          </div>
+
+          <!-- Madhiya 08:59 -->
+          <div class="sound-badge-card" style="border-color: rgba(5, 150, 105, 0.45);">
+            <div class="sound-badge-title">
+              <span>🇺🇿 5. O'zbekiston Davlat Madhiyasi (08:59 da)</span>
+              <button class="btn ghost sm" id="testAnthemBtn">▶ Sinash</button>
+            </div>
+            <div class="sound-badge-desc">
+              Har kuni soat <b>08:59 da</b> to'liq ijro etiladi (1-dars 09:00 da).
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div>
+            <label class="field-label">Madhiya ijro vaqti</label>
+            <input type="time" id="anthemTimeInput" value="08:59">
+          </div>
+          <div>
+            <label class="field-label">Avtomatik madhiya</label>
+            <select id="anthemToggle">
+              <option value="1">Yoqiq (08:59 da)</option>
+              <option value="0">O'chiq</option>
+            </select>
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+              <label class="field-label" style="margin-bottom:0;">Umumiy ovoz balandligi</label>
+              <span id="volLabel" style="font-weight:700; font-size:12px; color:var(--ac);">90%</span>
+            </div>
+            <input type="range" id="volRange" min="0" max="100" value="90">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap;">
+          <button class="btn success" id="testBellOnlyBtn">🔔 Faqat Qo'ng'iroq (Kirish)</button>
+          <button class="btn warning" id="testBreakFullBtn">▶ Tanaffus zanjiri (1-Voice)</button>
+          <button class="btn ghost" id="stopAudioBtn">⏹ To'xtatish</button>
+        </div>
+      </div>
+
+      <!-- Working Days & Fast Presets -->
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-title">
+          <span class="badge-dot">Haftalik ish kunlari</span>
+        </div>
+        <div class="days-bar" id="weekDaysBar">
+          <!-- Du, Se, Ch, Pa, Ju, Sh, Ya -->
+        </div>
+
+        <div style="margin-top: 18px;">
+          <label class="field-label">Jadval namunalari</label>
+          <div class="preset-pills">
+            <button class="btn ghost sm" id="presetStandard">📍 09:00 - 17:00 (Siz bergan jadval)</button>
+            <button class="btn ghost sm" id="presetWinter">❄️ Qisqartirilgan darslar (35 daqiqa)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview / Fast Simulation Mode -->
+      <div class="card" style="margin-top: 20px; border-color: rgba(6, 182, 212, 0.35);">
+        <div class="card-title">
+          <span class="badge-dot">Tezkor Sinov (Simulyatsiya)</span>
+        </div>
+        <p style="font-size: 13px; color: var(--mut); margin-bottom: 12px;">
+          08:58 dan boshlab madhiya (08:59), 1-dars (09:00), tanaffuslar, tushlik (12:30 va 13:05), to'lma choy va 17:00 dagi e'lonlarni tezkor tekshiring.
+        </p>
+        <div class="form-grid">
+          <div>
+            <label class="field-label">Boshlash vaqti</label>
+            <input type="time" id="simStartTime" value="08:58">
+          </div>
+          <div>
+            <label class="field-label">Tezlik ko'paytmasi</label>
+            <select id="simSpeedSelect">
+              <option value="30">×30 (1 son = 30 son)</option>
+              <option value="60">×60 (1 son = 1 daqiqa)</option>
+              <option value="120" selected>×120 (1 son = 2 daqiqa)</option>
+              <option value="600">×600 (Juda tez)</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 14px;">
+          <button class="btn" id="startSimBtn">⏩ Simulyatsiyani boshlash</button>
+          <button class="btn ghost" id="stopSimBtn">⏹ Real vaqtga qaytish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary Grid: Upcoming bells, Manual controls, Backup -->
+  <div class="grid-secondary">
+    <!-- Today's Upcoming Bell Schedule (Interactive) -->
+    <div class="card">
+      <div class="card-title">
+        <span class="badge-dot">Bugungi barcha qo'ng'iroqlar va e'lonlar jadvali</span>
+      </div>
+      <div class="scroll-list" id="todayBellList">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+
+    <!-- Manual Bell Trigger & Emergency Siren -->
+    <div class="card">
+      <div class="card-title">
+        <span class="badge-dot">Qo'lda boshqarish & Favqulodda signal</span>
+      </div>
+      <p style="font-size: 13px; color: var(--mut); margin-bottom: 12px;">
+        Zarur bo'lganda istalgan vaqtda qo'lda qo'ng'iroq chalish yoki to'xtatish.
+      </p>
+      <div class="quick-controls">
+        <button class="btn success" id="manualInBell">🔔 Faqat Qo'ng'iroq</button>
+        <button class="btn warning" id="manualBreakBell">🔔 Tanaffus zanjiri</button>
+        <button class="btn ghost" id="manualAnthemBtn">🇺🇿 Davlat Madhiyasi</button>
+        <button class="btn danger" id="manualSiren">🚨 Sirena</button>
+        <button class="btn ghost" id="manualStop">⏹ To'xtatish</button>
+      </div>
+    </div>
+
+    <!-- Backup & JSON Configuration -->
+    <div class="card">
+      <div class="card-title">
+        <span class="badge-dot">Zaxira nusxa & Sozlamalar</span>
+      </div>
+      <p style="font-size: 13px; color: var(--mut); margin-bottom: 10px;">
+        Sozlamalarni nusxalash yoki boshqa kompyuterga o'tkazish.
+      </p>
+      <textarea id="backupTextarea" placeholder="JSON matni shu yerda paydo bo'ladi..."></textarea>
+      <div style="display: flex; gap: 8px; margin-top: 10px;">
+        <button class="btn ghost sm" id="exportBackupBtn">📤 JSON Eksport</button>
+        <button class="btn ghost sm" id="importBackupBtn">📥 Tiklash (Import)</button>
+      </div>
+    </div>
+
+    <!-- Bell History Log -->
+    <div class="card">
+      <div class="card-title">
+        <span class="badge-dot">Qo'ng'iroqlar tarixi (Jurnal)</span>
+      </div>
+      <div class="scroll-list" id="bellLogList">
+        <div style="color: var(--mut); font-size: 13px;">Hali qo'ng'iroq chalinmadi</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: VoiceLab Tezkor E'lon & Tug'ilgan Kun Tabrigi -->
+<div class="modal-overlay" id="announcementModal">
+  <div class="modal-box" style="max-width: 620px;">
+    <div class="modal-header">
+      <div>
+        <h3 style="margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+          <span>📢</span> Tezkor E'lon & Tug'ilgan Kun Tabrigi
+        </h3>
+        <small style="color: var(--mut); display: flex; align-items: center; gap: 6px;">
+          <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+          <b>VoiceLab.uz</b> AI O'zbekiston milliy diktor ovozlari ulandi
+        </small>
+      </div>
+      <button class="modal-close" id="closeAnnouncementModal">&times;</button>
+    </div>
+
+    <!-- Ready Templates -->
+    <div style="margin-bottom: 12px;">
+      <label class="field-label">⚡ Tezkor shablonlar (1-bosishda):</label>
+      <div class="preset-pills" style="margin-top: 6px; margin-bottom: 4px;">
+        <button class="btn ghost sm" type="button" onclick="applyAnnouncementTemplate('birthday')">🎂 O'qituvchi tavallud ayyomi</button>
+        <button class="btn ghost sm" type="button" onclick="applyAnnouncementTemplate('meeting')">📢 O'qituvchilar majlisi</button>
+        <button class="btn ghost sm" type="button" onclick="applyAnnouncementTemplate('olympiad')">🏆 Olimpiada g'oliblari</button>
+        <button class="btn ghost sm" type="button" onclick="applyAnnouncementTemplate('duty')">🧹 Tartib & Tozalik</button>
+        <button class="btn ghost sm" type="button" onclick="applyAnnouncementTemplate('clear')">🔄 Tozalash</button>
+      </div>
+    </div>
+
+    <!-- Voice Selection -->
+    <div style="margin-bottom: 14px;">
+      <label class="field-label" for="ttsVoiceSelect">🎙 Ovozni tanlang:</label>
+      <select id="ttsVoiceSelect" style="font-weight: 700;">
+        <optgroup label="🇺🇿 VoiceLab.uz (O'zbek Milliy AI Diktorlari)">
+          <option value="voice_01J9NEUTRAL0000000000000001" selected>Gulnoza (Tiniq va muvozanatli) — VoiceLab</option>
+          <option value="voice_OBuMpAaB5iYCUZS0eCc9Fj3k">Firdavs Urinov (Rasmiy diktor) — VoiceLab</option>
+          <option value="voice_f7179d1c-07ab-4b3d-b5be-84dcf2935388">Dilnoza (Velvet, muloyim) — VoiceLab</option>
+          <option value="voice_xdQMoRJkjHbPIB-jounXzKq8">Sardor (Barqaror, aniq) — VoiceLab</option>
+          <option value="voice_fa56cecf-9b0b-45ba-9ec3-494efb5b301f">Javohir (Yorqin boshlovchi) — VoiceLab</option>
+          <option value="voice_EvIb9vE6iY_dWgK7OobYdZcX">Lola (Odobli, yosh ayol) — VoiceLab</option>
+          <option value="voice_4ef06e6b-2229-4023-ad66-c2a7a2b736ff">Madina (Mayin, iliq) — VoiceLab</option>
+          <option value="voice_2785aabd-21b5-4cc7-9845-2230186ef7d9">Safiya (Yo'l-yo'riq ko'rsatuvchi) — VoiceLab</option>
+          <option value="voice_M-p5iz9z_kPWNm_C0cFqbC6X">Abdulhay Otaxo'jayev (Piter Parker) — VoiceLab</option>
+          <option value="voice_8bae02c6-d078-4757-9d62-0fce6da23cf7">Amir (Ertakchi hikoyachi) — VoiceLab</option>
+          <option value="voice_2QZX3LFMkNO0lNyrOZ-WwJxK">Xurshid (Jonli erkak ovozi) — VoiceLab</option>
+        </optgroup>
+        <optgroup label="⚡ Microsoft Edge Neural (100% Bepul Zaxira)">
+          <option value="madina">Madina (Edge Neural) — Bepul</option>
+          <option value="sardor">Sardor (Edge Neural) — Bepul</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <!-- Textarea -->
+    <div style="margin-bottom: 12px;">
+      <label class="field-label" for="announcementText">✍️ E'lon yoki tabrik matni:</label>
+      <textarea id="announcementText" rows="4" placeholder="Masalan: Bugun maktabimiz matematika fani o'qituvchisi Dilnoza opa Aliyevaning tavallud ayyomi! Maktab ma'muriyati va jamoasi nomidan ustozimizni chin dildan muborakbod etamiz!"></textarea>
+      <small style="color: var(--mut); display: block; margin-top: 4px;">* Matn VoiceLab sun'iy intellekti orqali 2 soniyada jonli ovozga aylantiriladi.</small>
+    </div>
+
+    <!-- Intro chime toggle -->
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding: 10px; background: var(--chip-bg); border-radius: 10px;">
+      <input type="checkbox" id="announcementIntroChime" checked style="width: 18px; height: 18px; accent-color: var(--ac);">
+      <label for="announcementIntroChime" style="font-size: 13px; font-weight: 600; cursor: pointer;">
+        🔔 E'londan oldin diqqat signali (Freesound chime) chalinsin
+      </label>
+    </div>
+
+    <!-- Status indicator message -->
+    <div id="ttsStatusMsg" style="display: none; padding: 10px 14px; border-radius: 10px; font-size: 13px; font-weight: 600; margin-bottom: 14px;"></div>
+
+    <!-- Audio Player Preview -->
+    <div id="ttsPreviewPlayerBox" style="display: none; margin-bottom: 16px;">
+      <audio id="ttsPreviewAudio" controls style="width: 100%; border-radius: 8px;"></audio>
+    </div>
+
+    <!-- Action Buttons -->
+    <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 10px;">
+      <button class="btn ghost" id="previewAnnouncementBtn" type="button">🎧 Eshitib ko'rish</button>
+      <button class="btn success" id="broadcastAnnouncementBtn" type="button" style="font-weight: 800; background: linear-gradient(135deg, #10b981, #059669);">📢 Hozir radioga e'lon qilish</button>
+    </div>
+
+    <!-- Bottom Actions -->
+    <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+      <button class="btn warning sm" id="scheduleToNextBreakBtn" type="button">⏰ Keyingi tanaffusda ijro etishga qo'shish</button>
+      <button class="btn ghost sm" id="downloadAnnouncementMp3Btn" type="button">💾 MP3 yuklab olish</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Schedule Editor -->
+<div class="modal-overlay" id="scheduleModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Dars jadvalini tahrirlash</h3>
+      <button class="modal-close" id="closeScheduleModal">&times;</button>
+    </div>
+    <div id="modalScheduleItems" style="display: flex; flex-direction: column; gap: 12px;">
+      <!-- Dynamic inputs per schedule item -->
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 18px; align-items: center;">
+      <button class="btn ghost" id="addScheduleSlotBtn">＋ Yangi mashg'ulot qo'shish</button>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn ghost" id="cancelScheduleModal">Bekor qilish</button>
+        <button class="btn success" id="saveScheduleModal">Saqlash</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification box -->
+<div class="toast-notice" id="toastNotice">
+  <span id="toastIcon">🔔</span>
+  <span id="toastMessage">Xabar</span>
+</div>
+
+<!-- ========================================================
+     JAVASCRIPT LOGIC & AUDIO ENGINE WITH 4 CUSTOM VOICES
+     ======================================================== -->
+<script>
+/* --------------------------------------------------------
+   1. DARS JADVALI VA ASOSIY SOZLAMALAR
+   Siz bergan aniq tartib:
+   08:59 — Davlat Madhiyasi
+   1-soat: 09:00 - 09:45 (10 daq tanaffus)
+   2-soat: 09:55 - 10:40 (10 daq tanaffus)
+   3-soat: 10:50 - 11:35 (10 daq tanaffus)
+   4-soat: 11:45 - 12:30 (35 daq tushlik)
+   5-soat: 13:05 - 13:50 (10 daq tanaffus)
+   6-soat: 14:00 - 14:45 (10 daq tanaffus)
+   7-soat: 14:55 - 15:40 (20 daq to'lma choy)
+   Uyga vazifa soati: 16:00 - 17:00
+   -------------------------------------------------------- */
+const DEFAULT_SCHEDULE = [
+  { id: 1, name: "1-soat", start: "09:00", end: "09:45", type: "lesson", breakMin: 10, breakName: "Tanaffus (10 daq)" },
+  { id: 2, name: "2-soat", start: "09:55", end: "10:40", type: "lesson", breakMin: 10, breakName: "Tanaffus (10 daq)" },
+  { id: 3, name: "3-soat", start: "10:50", end: "11:35", type: "lesson", breakMin: 10, breakName: "Tanaffus (10 daq)" },
+  { id: 4, name: "4-soat", start: "11:45", end: "12:30", type: "lesson", breakMin: 35, breakName: "Tushlik vaqti (35 daq)" },
+  { id: 5, name: "5-soat", start: "13:05", end: "13:50", type: "lesson", breakMin: 10, breakName: "Tanaffus (10 daq)" },
+  { id: 6, name: "6-soat", start: "14:00", end: "14:45", type: "lesson", breakMin: 10, breakName: "Tanaffus (10 daq)" },
+  { id: 7, name: "7-soat", start: "14:55", end: "15:40", type: "lesson", breakMin: 20, breakName: "To'lma choy (20 daq)" },
+  { id: 8, name: "Uyga vazifa soati", start: "16:00", end: "17:00", type: "hw", breakMin: 0, breakName: "Kun yakuni" }
+];
+
+const DEFAULT_SETTINGS = {
+  version: 7,
+  schedule: JSON.parse(JSON.stringify(DEFAULT_SCHEDULE)),
+  days: [1, 1, 1, 1, 1, 1, 0],
+  volume: 90,
+  anthemTime: "08:59",
+  anthemEnabled: 1,
+  muted: false,
+  holidays: []
+};
+
+let AppConfig = JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
+
+try {
+  const saved = localStorage.getItem("smart_school_bell_v7");
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    AppConfig = Object.assign({}, DEFAULT_SETTINGS, parsed);
+    if (!AppConfig.schedule || !AppConfig.schedule.length) {
+      AppConfig.schedule = JSON.parse(JSON.stringify(DEFAULT_SCHEDULE));
+    }
+  }
+} catch (e) {
+  console.warn("Storage error:", e);
+}
+
+function saveConfig() {
+  try {
+    localStorage.setItem("smart_school_bell_v7", JSON.stringify(AppConfig));
+  } catch (e) {
+    console.error("Storage save error:", e);
+  }
+}
+
+/* --------------------------------------------------------
+   2. VAQT FUNKSIYALARI
+   -------------------------------------------------------- */
+function timeToSec(str) {
+  if (!str) return 0;
+  const [h, m, s] = str.split(":").map(Number);
+  return (h || 0) * 3600 + (m || 0) * 60 + (s || 0);
+}
+
+function secToHms(sec) {
+  sec = Math.max(0, Math.floor(sec));
+  const h = String(Math.floor(sec / 3600)).padStart(2, "0");
+  const m = String(Math.floor((sec % 3600) / 60)).padStart(2, "0");
+  const s = String(sec % 60).padStart(2, "0");
+  return `${h}:${m}:${s}`;
+}
+
+function secToHm(sec) {
+  sec = Math.max(0, Math.floor(sec));
+  const h = String(Math.floor(sec / 3600) % 24).padStart(2, "0");
+  const m = String(Math.floor((sec % 3600) / 60)).padStart(2, "0");
+  return `${h}:${m}`;
+}
+
+function secToRemainingString(sec) {
+  sec = Math.max(0, Math.ceil(sec));
+  const m = Math.floor(sec / 60);
+  const s = String(sec % 60).padStart(2, "0");
+  if (m >= 60) {
+    const h = Math.floor(m / 60);
+    const remM = m % 60;
+    return `${h} soat ${remM} daq`;
+  }
+  return `${m} daq ${s} son`;
+}
+
+function getDurationMinutes(startSec, endSec) {
+  return Math.round((endSec - startSec) / 60);
+}
+
+/* --------------------------------------------------------
+   3. AUDIO TIZIMI VA 4 TA AUDIO ZANJIR QOIDASI
+   1. bell.mp3 (Qo'ng'iroq)
+   2. freesound.mp3 (Chime)
+   3. madhiya.mp3 (Davlat Madhiyasi)
+   4. voice_1_tanaffus.mp3 (1-voice)
+   5. voice_2_tushlik.mp3 (2-voice)
+   6. voice_3_tushlik_tugadi.mp3 (3-voice)
+   7. voice_4_kun_yakuni.mp3 (4-voice)
+   -------------------------------------------------------- */
+function getAudioUrl(fileName) {
+  if (typeof window !== 'undefined' && window.location && window.location.protocol.startsWith('http')) {
+    return '/audio/' + fileName;
+  }
+  return 'audio/' + fileName;
+}
+
+const AUDIO_PATHS = {
+  bell: getAudioUrl("bell.mp3"),
+  freesound: getAudioUrl("freesound.mp3"),
+  anthem: getAudioUrl("madhiya.mp3"),
+  voice1: getAudioUrl("voice_1_tanaffus.mp3"),
+  voice2: getAudioUrl("voice_2_tushlik.mp3"),
+  voice3: getAudioUrl("voice_3_tushlik_tugadi.mp3"),
+  voice4: getAudioUrl("voice_4_kun_yakuni.mp3")
+};
+
+let audioCtx = null;
+let isAudioUnlocked = false;
+let activeAudio = null;
+let currentChain = [];
+let chainIndex = 0;
+
+function unlockAudioEngine() {
+  try {
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContextClass();
+    }
+    if (audioCtx.state === "suspended") {
+      audioCtx.resume();
+    }
+    isAudioUnlocked = true;
+
+    if ("wakeLock" in navigator) {
+      navigator.wakeLock.request("screen").catch(() => {});
+    }
+
+    const warnEl = document.getElementById("audioWarnBanner");
+    if (warnEl) warnEl.style.display = "none";
+    const unlockBtn = document.getElementById("audioUnlockBtn");
+    if (unlockBtn) {
+      unlockBtn.textContent = "🔊 Ovoz faol";
+      unlockBtn.classList.replace("ghost", "success");
+    }
+  } catch (err) {
+    console.error("Audio unlock error:", err);
+  }
+}
+
+["click", "keydown", "touchstart"].forEach(evt => {
+  window.addEventListener(evt, () => {
+    if (!isAudioUnlocked) unlockAudioEngine();
+  }, { passive: true, once: true });
+});
+
+function stopAllAudio() {
+  currentChain = [];
+  chainIndex = 0;
+  if (activeAudio) {
+    try {
+      activeAudio.pause();
+      activeAudio.currentTime = 0;
+    } catch (e) {}
+    activeAudio = null;
+  }
+  const icon = document.getElementById("bellLogoIcon");
+  if (icon) icon.classList.remove("bell-ring-active");
+}
+
+/* KETMA-KET AUDIO IJRO ETISH ZANJIRI (SEQUENCE PLAYER) */
+function playAudioSequence(audioUrls, totalAnimDuration = 18000) {
+  if (AppConfig.muted) return;
+  unlockAudioEngine();
+  stopAllAudio();
+  animateBellIcon(totalAnimDuration);
+
+  currentChain = audioUrls.filter(Boolean);
+  chainIndex = 0;
+
+  function playNext() {
+    if (chainIndex >= currentChain.length) {
+      currentChain = [];
+      chainIndex = 0;
+      return;
+    }
+    const url = currentChain[chainIndex];
+    chainIndex++;
+
+    const audio = new Audio(url);
+    activeAudio = audio;
+    audio.volume = Math.max(0, Math.min(1, AppConfig.volume / 100));
+
+    let nextCalled = false;
+    const callNext = () => {
+      if (nextCalled) return;
+      nextCalled = true;
+      playNext();
+    };
+
+    audio.onended = callNext;
+    audio.onerror = () => {
+      console.warn("Audio fayl yuklanmadi:", url);
+      callNext();
+    };
+
+    audio.play().catch(err => {
+      console.warn("Audio ijro xatoligi:", err);
+      callNext();
+    });
+
+    // Safety timeout in case onended doesn't trigger
+    setTimeout(() => {
+      if (!nextCalled && activeAudio === audio) {
+        callNext();
+      }
+    }, 25000);
+  }
+
+  playNext();
+}
+
+function animateBellIcon(durationMs = 2500) {
+  const icon = document.getElementById("bellLogoIcon");
+  if (!icon) return;
+  icon.classList.add("bell-ring-active");
+  setTimeout(() => {
+    icon.classList.remove("bell-ring-active");
+  }, Math.min(22000, durationMs));
+}
+
+// Favqulodda sirena
+function playEmergencySiren() {
+  unlockAudioEngine();
+  if (!audioCtx) return;
+  const now = audioCtx.currentTime + 0.05;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = "sawtooth";
+  osc.frequency.setValueAtTime(550, now);
+  for (let i = 0; i < 10; i++) {
+    const target = i % 2 === 0 ? 1150 : 550;
+    osc.frequency.linearRampToValueAtTime(target, now + (i + 1) * 0.5);
+  }
+  gain.gain.setValueAtTime(0.7, now);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 5.0);
+  osc.connect(gain).connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 5.1);
+  animateBellIcon(5000);
+}
+
+/* --------------------------------------------------------
+   4. KUNLIK QO'NG'IROQLAR VA AUDIO ZANJIRLAR RO'YXATI
+   -------------------------------------------------------- */
+function generateDailyBellEvents() {
+  const events = [];
+  const schedule = AppConfig.schedule;
+  if (!schedule || !schedule.length) return events;
+
+  // 1. Davlat Madhiyasi (08:59)
+  if (AppConfig.anthemEnabled) {
+    const anthemSec = timeToSec(AppConfig.anthemTime || "08:59");
+    events.push({
+      timeSec: anthemSec,
+      type: "anthem",
+      name: "🇺🇿 O'zbekiston Davlat Madhiyasi",
+      desc: "Darslardan oldingi madhiya",
+      seqDesc: "Madhiya (madhiya.mp3)",
+      sequence: [AUDIO_PATHS.anthem]
+    });
+  }
+
+  // 2. Darslar va Tanaffuslar ketma-ketligi
+  schedule.forEach((slot) => {
+    const startSec = timeToSec(slot.start);
+    const endSec = timeToSec(slot.end);
+
+    // --- KIRISH (Dars boshlanishi / Tanaffus tugashi) ---
+    if (slot.id === 5) {
+      // Qoida 3: Tushlik vaqti tugaganda soat 13:05 da: Qo'ng'iroq + Freesound + 3-Voice
+      events.push({
+        timeSec: startSec,
+        type: "in_after_lunch",
+        name: `🔔 ${slot.name} boshlandi (Tushlik tugadi)`,
+        desc: "Tushlik tugashi va 5-dars boshlanishi",
+        seqDesc: "Qo'ng'iroq ➔ Freesound ➔ 3-Voice",
+        sequence: [AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice3],
+        slotId: slot.id
+      });
+    } else {
+      // Qoida 1: Tanaffus tugaganda qo'ng'iroqning o'zi ijro etiladi
+      events.push({
+        timeSec: startSec,
+        type: "in_bell_only",
+        name: `🔔 ${slot.name} boshlandi (Kirish)`,
+        desc: "Dars boshlanishi qo'ng'irog'i",
+        seqDesc: "Faqat Qo'ng'iroq (bell.mp3)",
+        sequence: [AUDIO_PATHS.bell],
+        slotId: slot.id
+      });
+    }
+
+    // --- CHIQISH (Tanaffus boshlanishi) ---
+    if (slot.id === 4) {
+      // Qoida 2: Tushlik vaqti boshlanganda soat 12:30 da: Qo'ng'iroq + Freesound + 2-Voice
+      events.push({
+        timeSec: endSec,
+        type: "out_lunch",
+        name: `🍲 4-soat tugadi (Tushlik boshlandi)`,
+        desc: "Katta tanaffus — tushlik vaqti",
+        seqDesc: "Qo'ng'iroq ➔ Freesound ➔ 2-Voice (Tushlik)",
+        sequence: [AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice2],
+        slotId: slot.id
+      });
+    } else if (slot.id === 8) {
+      // Qoida 4: Uyga vazifa soat 17:00 da tugaganda: Qo'ng'iroq + Freesound + 4-Voice
+      events.push({
+        timeSec: endSec,
+        type: "out_end",
+        name: `🎉 Uyga vazifa soati tugadi (Kun yakuni)`,
+        desc: "Kunlik darslar va mashg'ulotlar yakuni",
+        seqDesc: "Qo'ng'iroq ➔ Freesound ➔ 4-Voice (Kun yakuni)",
+        sequence: [AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice4],
+        slotId: slot.id
+      });
+    } else {
+      // Qoida 1: Har bir oddiy tanaffus boshlanganda: Qo'ng'iroq + Freesound + 1-Voice
+      events.push({
+        timeSec: endSec,
+        type: "out_break",
+        name: `🔔 ${slot.name} tugadi (Tanaffus)`,
+        desc: `${slot.breakName} boshlandi`,
+        seqDesc: "Qo'ng'iroq ➔ Freesound ➔ 1-Voice (Tanaffus)",
+        sequence: [AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice1],
+        slotId: slot.id
+      });
+    }
+  });
+
+  return events.sort((a, b) => a.timeSec - b.timeSec);
+}
+
+let bellEventLogs = [];
+
+function triggerBellEvent(event, quietMode = false) {
+  const timeFormatted = secToHm(event.timeSec);
+  showToast(`${event.name} • ${timeFormatted}`, "info");
+
+  bellEventLogs.unshift({
+    time: secToHms(event.timeSec),
+    name: event.name,
+    type: event.type
+  });
+  if (bellEventLogs.length > 50) bellEventLogs.pop();
+  renderBellLogs();
+
+  if (AppConfig.muted || quietMode) return;
+
+  if (event.sequence && event.sequence.length) {
+    playAudioSequence(event.sequence);
+  }
+}
+
+/* --------------------------------------------------------
+   5. ASOSIY MONITORING SIKLI (MAIN TICK)
+   -------------------------------------------------------- */
+let simState = null;
+let lastTickTimestamp = performance.now();
+let lastProcessedSec = null;
+
+function getNowSeconds() {
+  if (simState) return simState.sec;
+  const d = new Date();
+  return d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds() + d.getMilliseconds() / 1000;
+}
+
+function isTodaySchoolDay() {
+  if (simState) return true;
+  const d = new Date();
+  const dayIndex = (d.getDay() + 6) % 7;
+  return !!AppConfig.days[dayIndex];
+}
+
+function mainTick() {
+  const nowPerf = performance.now();
+  const dt = (nowPerf - lastTickTimestamp) / 1000;
+  lastTickTimestamp = nowPerf;
+
+  if (simState) {
+    simState.sec += dt * simState.speed;
+    if (simState.sec >= 86400) simState.sec = 0;
+  }
+
+  const curSec = getNowSeconds();
+  const schedule = AppConfig.schedule;
+
+  // Clock
+  document.getElementById("clockDisplay").textContent = secToHms(curSec);
+  const dateObj = new Date();
+  const dateStr = simState 
+    ? `⏩ Tezlashtirilgan Simulyatsiya (×${simState.speed})`
+    : dateObj.toLocaleDateString("uz-UZ", { weekday: "long", day: "numeric", month: "long" });
+  document.getElementById("dateDisplay").textContent = dateStr;
+
+  // Bell firing
+  const isSchoolDay = isTodaySchoolDay();
+  if (lastProcessedSec !== null && curSec >= lastProcessedSec && isSchoolDay) {
+    const allEvents = generateDailyBellEvents();
+    const dueEvents = allEvents.filter(e => e.timeSec > lastProcessedSec && e.timeSec <= curSec);
+    dueEvents.forEach((ev, idx) => {
+      const quiet = simState && simState.speed > 60 && idx < dueEvents.length - 1;
+      triggerBellEvent(ev, quiet);
+    });
+  }
+  lastProcessedSec = curSec;
+
+  updateLiveStatusDisplay(curSec, schedule, isSchoolDay);
+  updateTableAndTimelineProgress(curSec, schedule);
+}
+
+function updateLiveStatusDisplay(curSec, schedule, isSchoolDay) {
+  const pillEl = document.getElementById("statusPill");
+  const headlineEl = document.getElementById("statusHeadline");
+  const subEl = document.getElementById("statusSub");
+  const circleEl = document.getElementById("progressCircle");
+  const chipNextBellEl = document.getElementById("chipNextBell");
+
+  if (!schedule || !schedule.length) return;
+
+  const anthemSec = timeToSec(AppConfig.anthemTime || "08:59");
+  const firstStartSec = timeToSec(schedule[0].start);
+  const lastEndSec = timeToSec(schedule[schedule.length - 1].end);
+
+  const allEvents = generateDailyBellEvents();
+  const nextEvent = allEvents.find(e => e.timeSec > curSec);
+  chipNextBellEl.textContent = nextEvent ? secToHm(nextEvent.timeSec) : "—";
+
+  if (!isSchoolDay) {
+    pillEl.textContent = "Dam olish kuni";
+    pillEl.className = "pill done";
+    headlineEl.textContent = "Bugun darslar yo'q";
+    subEl.textContent = "Dam olishingiz maroqli o'tsin!";
+    circleEl.style.strokeDashoffset = 615.75;
+    return;
+  }
+
+  // Madhiya vaqti (08:59)
+  if (curSec >= anthemSec && curSec < firstStartSec) {
+    pillEl.textContent = "🇺🇿 Davlat Madhiyasi";
+    pillEl.className = "pill anthem";
+    headlineEl.textContent = "Davlat Madhiyasi yangramoqda";
+    const rem = firstStartSec - curSec;
+    subEl.textContent = `1-soat boshlanishiga: ${secToRemainingString(rem)} qoldi (09:00)`;
+    const progress = (curSec - anthemSec) / (firstStartSec - anthemSec);
+    circleEl.style.strokeDashoffset = 615.75 * (1 - progress);
+    return;
+  }
+
+  if (curSec < anthemSec) {
+    pillEl.textContent = "Ertalabki vaqt";
+    pillEl.className = "pill lesson";
+    headlineEl.textContent = `Madhiya soat ${AppConfig.anthemTime || "08:59"} da`;
+    const rem = anthemSec - curSec;
+    subEl.textContent = `Madhiya ijrosiga: ${secToRemainingString(rem)} qoldi (1-dars 09:00)`;
+    circleEl.style.strokeDashoffset = 615.75;
+    return;
+  }
+
+  if (curSec >= lastEndSec) {
+    pillEl.textContent = "Darslar tugadi";
+    pillEl.className = "pill done";
+    headlineEl.textContent = "Kun yakunlandi 🎉";
+    subEl.textContent = `Ertaga soat ${AppConfig.anthemTime || "08:59"} da ko'rishguncha!`;
+    circleEl.style.strokeDashoffset = 0;
+    return;
+  }
+
+  let activeSlot = null;
+  for (let i = 0; i < schedule.length; i++) {
+    const s = timeToSec(schedule[i].start);
+    const e = timeToSec(schedule[i].end);
+    if (curSec >= s && curSec < e) {
+      activeSlot = schedule[i];
+      break;
+    }
+  }
+
+  if (activeSlot) {
+    const s = timeToSec(activeSlot.start);
+    const e = timeToSec(activeSlot.end);
+    const progress = (curSec - s) / (e - s);
+    circleEl.style.strokeDashoffset = 615.75 * (1 - progress);
+
+    pillEl.textContent = activeSlot.name;
+    pillEl.className = `pill ${activeSlot.type}`;
+
+    if (activeSlot.type === "hw") {
+      headlineEl.textContent = "Uyga vazifa soati 📚";
+      subEl.textContent = `Tugashiga: ${secToRemainingString(e - curSec)} (${activeSlot.end})`;
+    } else {
+      headlineEl.textContent = `${activeSlot.name} davom etmoqda`;
+      subEl.textContent = `Tanaffus qo'ng'irog'iga: ${secToRemainingString(e - curSec)} (${activeSlot.end})`;
+    }
+  } else {
+    let prevSlot = null;
+    let nextSlot = null;
+    for (let i = 0; i < schedule.length - 1; i++) {
+      const ePrev = timeToSec(schedule[i].end);
+      const sNext = timeToSec(schedule[i + 1].start);
+      if (curSec >= ePrev && curSec < sNext) {
+        prevSlot = schedule[i];
+        nextSlot = schedule[i + 1];
+        break;
+      }
+    }
+
+    if (prevSlot && nextSlot) {
+      const ePrev = timeToSec(prevSlot.end);
+      const sNext = timeToSec(nextSlot.start);
+      const progress = (curSec - ePrev) / (sNext - ePrev);
+      circleEl.style.strokeDashoffset = 615.75 * (1 - progress);
+      const remainSec = sNext - curSec;
+
+      if (prevSlot.id === 4) {
+        pillEl.textContent = "Tushlik vaqti (35 daqiqa)";
+        pillEl.className = "pill lunch";
+        headlineEl.textContent = "Katta tanaffus / Tushlik 🍲";
+        subEl.textContent = `5-soat ${nextSlot.start} da boshlanadi • Qoldi: ${secToRemainingString(remainSec)}`;
+      } else if (prevSlot.id === 7) {
+        pillEl.textContent = "To'lma choy (20 daqiqa)";
+        pillEl.className = "pill tea";
+        headlineEl.textContent = "To'lma choy (Yengil tamaddi) ☕";
+        subEl.textContent = `Uyga vazifa soati ${nextSlot.start} da boshlanadi • Qoldi: ${secToRemainingString(remainSec)}`;
+      } else {
+        pillEl.textContent = "Tanaffus";
+        pillEl.className = "pill break";
+        headlineEl.textContent = "Tanaffus vaqti 🔔";
+        subEl.textContent = `Keyingi dars (${nextSlot.name}) ${nextSlot.start} da • Qoldi: ${secToRemainingString(remainSec)}`;
+      }
+    }
+  }
+}
+
+function updateTableAndTimelineProgress(curSec, schedule) {
+  if (!schedule || !schedule.length) return;
+
+  const firstStartSec = timeToSec(schedule[0].start);
+  const lastEndSec = timeToSec(schedule[schedule.length - 1].end);
+  const totalSpan = lastEndSec - firstStartSec;
+
+  const needle = document.getElementById("timelineNeedle");
+  if (needle && totalSpan > 0) {
+    const fraction = (curSec - firstStartSec) / totalSpan;
+    if (fraction >= 0 && fraction <= 1) {
+      needle.style.display = "block";
+      needle.style.left = `${fraction * 100}%`;
+    } else {
+      needle.style.display = "none";
+    }
+  }
+
+  document.querySelectorAll("#scheduleTableBody tr").forEach(row => {
+    const slotId = +row.dataset.slotId;
+    const slot = schedule.find(s => s.id === slotId);
+    if (slot) {
+      const s = timeToSec(slot.start);
+      const e = timeToSec(slot.end);
+      const isActive = curSec >= s && curSec < e;
+      row.classList.toggle("active-period", isActive);
+      const statusCell = row.querySelector(".row-status-cell");
+      if (statusCell) {
+        if (isActive) {
+          statusCell.innerHTML = `<span style="color:var(--ok); font-weight:800;">● O'tilmoqda</span>`;
+        } else if (curSec >= e) {
+          statusCell.innerHTML = `<span style="color:var(--mut);">✓ Yakunlangan</span>`;
+        } else {
+          statusCell.innerHTML = `<span style="color:var(--mut);">Kutilmoqda</span>`;
+        }
+      }
+    }
+  });
+}
+
+/* --------------------------------------------------------
+   6. UI RENDER FUNKSIYALARI
+   -------------------------------------------------------- */
+function renderScheduleTable() {
+  const tbody = document.getElementById("scheduleTableBody");
+  tbody.innerHTML = "";
+
+  AppConfig.schedule.forEach((slot) => {
+    const startSec = timeToSec(slot.start);
+    const endSec = timeToSec(slot.end);
+    const durMin = getDurationMinutes(startSec, endSec);
+
+    let breakBadge = "—";
+    if (slot.breakMin > 0) {
+      let bClass = "break";
+      if (slot.id === 4) bClass = "lunch";
+      if (slot.id === 7) bClass = "tea";
+      breakBadge = `<span class="badge-tag ${bClass}">${slot.breakName}</span>`;
+    }
+
+    const tr = document.createElement("tr");
+    tr.dataset.slotId = slot.id;
+    tr.innerHTML = `
+      <td><span class="badge-tag ${slot.type}">${slot.id}</span></td>
+      <td><b>${slot.name}</b></td>
+      <td><b>${slot.start}</b> — <b>${slot.end}</b></td>
+      <td>${durMin} daqiqa</td>
+      <td>${breakBadge}</td>
+      <td class="row-status-cell"><span style="color:var(--mut);">Kutilmoqda</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  renderTimelineBar();
+  renderTodayBellList();
+  updateTopChips();
+}
+
+function renderTimelineBar() {
+  const bar = document.getElementById("timelineBar");
+  bar.innerHTML = "";
+  const schedule = AppConfig.schedule;
+  if (!schedule || !schedule.length) return;
+
+  const firstStartSec = timeToSec(schedule[0].start);
+  const lastEndSec = timeToSec(schedule[schedule.length - 1].end);
+  const totalSpan = lastEndSec - firstStartSec;
+  if (totalSpan <= 0) return;
+
+  schedule.forEach((slot, idx) => {
+    const s = timeToSec(slot.start);
+    const e = timeToSec(slot.end);
+    const slotWidthPct = ((e - s) / totalSpan) * 100;
+
+    const slotDiv = document.createElement("div");
+    slotDiv.className = `tl-item ${slot.type}`;
+    slotDiv.style.width = `${slotWidthPct}%`;
+    slotDiv.title = `${slot.name} (${slot.start} - ${slot.end})`;
+    slotDiv.textContent = slot.type === "hw" ? "Vazifa" : slot.name;
+    bar.appendChild(slotDiv);
+
+    if (idx < schedule.length - 1) {
+      const nextS = timeToSec(schedule[idx + 1].start);
+      const gapSec = nextS - e;
+      if (gapSec > 0) {
+        const gapWidthPct = (gapSec / totalSpan) * 100;
+        const breakDiv = document.createElement("div");
+        let bType = "break";
+        if (slot.id === 4) bType = "lunch";
+        if (slot.id === 7) bType = "tea";
+        breakDiv.className = `tl-item ${bType}`;
+        breakDiv.style.width = `${gapWidthPct}%`;
+        breakDiv.title = `${slot.breakName} (${gapSec / 60} daqiqa)`;
+        if (gapWidthPct > 5) {
+          breakDiv.textContent = slot.id === 4 ? "Tushlik" : (slot.id === 7 ? "Choy" : "Tan.");
+        }
+        bar.appendChild(breakDiv);
+      }
+    }
+  });
+
+  const needle = document.createElement("span");
+  needle.className = "tl-needle";
+  needle.id = "timelineNeedle";
+  bar.appendChild(needle);
+}
+
+function updateTopChips() {
+  const s = AppConfig.schedule;
+  if (!s || !s.length) return;
+  document.getElementById("chipAnthemTime").textContent = AppConfig.anthemTime || "08:59";
+  document.getElementById("chipStartTime").textContent = s[0].start;
+  document.getElementById("chipEndTime").textContent = s[s.length - 1].end;
+}
+
+function renderTodayBellList() {
+  const container = document.getElementById("todayBellList");
+  container.innerHTML = "";
+  const events = generateDailyBellEvents();
+  const curSec = getNowSeconds();
+
+  events.forEach((ev) => {
+    const isPast = ev.timeSec <= curSec;
+    const isNext = !isPast && events.find(x => x.timeSec > curSec) === ev;
+
+    const div = document.createElement("div");
+    div.className = `event-item ${isPast ? "past" : ""} ${isNext ? "next-event" : ""}`;
+
+    div.innerHTML = `
+      <b>${secToHm(ev.timeSec)}</b>
+      <span class="desc">
+        <span>${ev.name}</span>
+        <span class="seq-badge">▶ ${ev.seqDesc}</span>
+      </span>
+      <button class="btn ghost sm" title="Ovozini sinab ko'rish">▶</button>
+    `;
+
+    div.querySelector("button").onclick = () => {
+      unlockAudioEngine();
+      triggerBellEvent(ev, false);
+    };
+
+    container.appendChild(div);
+  });
+}
+
+function renderBellLogs() {
+  const container = document.getElementById("bellLogList");
+  if (!bellEventLogs.length) {
+    container.innerHTML = `<div style="color:var(--mut); font-size:13px;">Hali qo'ng'iroq chalinmadi</div>`;
+    return;
+  }
+  container.innerHTML = bellEventLogs.map(l => `
+    <div class="event-item">
+      <b>${l.time}</b>
+      <span class="desc">${l.name}</span>
+    </div>
+  `).join("");
+}
+
+function renderWeekDays() {
+  const bar = document.getElementById("weekDaysBar");
+  bar.innerHTML = "";
+  const dayNames = ["Du", "Se", "Ch", "Pa", "Ju", "Sh", "Ya"];
+  dayNames.forEach((d, idx) => {
+    const btn = document.createElement("button");
+    btn.className = `day-btn ${AppConfig.days[idx] ? "active" : ""}`;
+    btn.textContent = d;
+    btn.onclick = () => {
+      AppConfig.days[idx] = AppConfig.days[idx] ? 0 : 1;
+      btn.classList.toggle("active", !!AppConfig.days[idx]);
+      saveConfig();
+      showToast(`${d} kuni ${AppConfig.days[idx] ? "faollashtirildi" : "o'chirildi"}`);
+    };
+    bar.appendChild(btn);
+  });
+}
+
+function showToast(message, type = "info") {
+  const toast = document.getElementById("toastNotice");
+  const msgEl = document.getElementById("toastMessage");
+  const icoEl = document.getElementById("toastIcon");
+
+  msgEl.textContent = message;
+  icoEl.textContent = type === "success" ? "✅" : (type === "warning" ? "⚠️" : "🔔");
+
+  toast.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 4000);
+}
+
+/* --------------------------------------------------------
+   7. BOSHQARUV TUGMALARI VA HODISALARI
+   -------------------------------------------------------- */
+function bindFormControls() {
+  const anthemTimeIn = document.getElementById("anthemTimeInput");
+  const anthemToggle = document.getElementById("anthemToggle");
+  const volRange = document.getElementById("volRange");
+  const volLabel = document.getElementById("volLabel");
+
+  anthemTimeIn.value = AppConfig.anthemTime || "08:59";
+  anthemToggle.value = AppConfig.anthemEnabled;
+  volRange.value = AppConfig.volume;
+  volLabel.textContent = AppConfig.volume + "%";
+
+  anthemTimeIn.onchange = () => {
+    AppConfig.anthemTime = anthemTimeIn.value || "08:59";
+    saveConfig();
+    updateTopChips();
+    renderTodayBellList();
+    showToast(`Madhiya vaqti ${AppConfig.anthemTime} ga o'rnatildi`);
+  };
+
+  anthemToggle.onchange = () => {
+    AppConfig.anthemEnabled = +anthemToggle.value;
+    saveConfig();
+    renderTodayBellList();
+  };
+
+  volRange.oninput = () => {
+    AppConfig.volume = +volRange.value;
+    volLabel.textContent = AppConfig.volume + "%";
+    if (activeAudio) activeAudio.volume = AppConfig.volume / 100;
+    saveConfig();
+  };
+
+  // Sinov tugmalari (Test Buttons)
+  // 1-Voice (Har bir tanaffus)
+  document.getElementById("testVoice1Btn").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice1]);
+    showToast("Tanaffus zanjiri (Qo'ng'iroq ➔ Freesound ➔ 1-Voice)");
+  };
+
+  // 2-Voice (Tushlik boshlanishi 12:30)
+  document.getElementById("testVoice2Btn").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice2]);
+    showToast("Tushlik boshlanishi (Qo'ng'iroq ➔ Freesound ➔ 2-Voice)");
+  };
+
+  // 3-Voice (Tushlik tugashi 13:05)
+  document.getElementById("testVoice3Btn").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice3]);
+    showToast("Tushlik tugashi (Qo'ng'iroq ➔ Freesound ➔ 3-Voice)");
+  };
+
+  // 4-Voice (Kun yakuni 17:00)
+  document.getElementById("testVoice4Btn").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice4]);
+    showToast("Kun yakuni (Qo'ng'iroq ➔ Freesound ➔ 4-Voice)");
+  };
+
+  // Madhiya
+  document.getElementById("testAnthemBtn").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.anthem]);
+    showToast("O'zbekiston Davlat Madhiyasi (08:59)");
+  };
+
+  // Faqat qo'ng'iroq (Kirish)
+  document.getElementById("testBellOnlyBtn").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.bell]);
+    showToast("Faqat qo'ng'iroq (Darsga kirish / Tanaffus tugashi)");
+  };
+
+  document.getElementById("testBreakFullBtn").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice1]);
+  };
+
+  document.getElementById("stopAudioBtn").onclick = () => {
+    stopAllAudio();
+    showToast("Ovoz to'xtatildi");
+  };
+
+  // Manual buttons
+  document.getElementById("manualInBell").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.bell]);
+    showToast("Kirish qo'ng'irog'i (faqat qo'ng'iroq) chalindi");
+  };
+
+  document.getElementById("manualBreakBell").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.bell, AUDIO_PATHS.freesound, AUDIO_PATHS.voice1]);
+    showToast("Tanaffus qo'ng'irog'i chalindi");
+  };
+
+  document.getElementById("manualAnthemBtn").onclick = () => {
+    unlockAudioEngine();
+    playAudioSequence([AUDIO_PATHS.anthem]);
+    showToast("Davlat Madhiyasi yangramoqda");
+  };
+
+  document.getElementById("manualSiren").onclick = () => {
+    unlockAudioEngine();
+    playEmergencySiren();
+    showToast("🚨 Favqulodda sirena chalindi", "warning");
+  };
+
+  document.getElementById("manualStop").onclick = () => {
+    stopAllAudio();
+  };
+
+  // Mute
+  const muteBtn = document.getElementById("muteToggleBtn");
+  function syncMuteUi() {
+    muteBtn.textContent = AppConfig.muted ? "🔕 Ovozsiz" : "🔔 Ovoz bor";
+    muteBtn.classList.toggle("warning", AppConfig.muted);
+  }
+  syncMuteUi();
+  muteBtn.onclick = () => {
+    AppConfig.muted = !AppConfig.muted;
+    saveConfig();
+    syncMuteUi();
+    showToast(AppConfig.muted ? "Ovozsiz rejim faollashdi" : "Ovozlar yoqildi");
+  };
+
+  // Theme
+  document.getElementById("themeToggleBtn").onclick = () => {
+    const html = document.documentElement;
+    const isDark = html.getAttribute("data-theme") === "dark";
+    html.setAttribute("data-theme", isDark ? "light" : "dark");
+  };
+
+  // TV Mode
+  const tvBtn = document.getElementById("tvToggleBtn");
+  const exitTvBtn = document.getElementById("exitTvBtn");
+  function toggleTvMode(enable) {
+    const body = document.body;
+    const shouldEnable = enable !== undefined ? enable : !body.classList.contains("tv-mode");
+    body.classList.toggle("tv-mode", shouldEnable);
+    if (shouldEnable) {
+      try {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+      } catch (e) {}
+    } else {
+      try {
+        if (document.fullscreenElement) {
+          document.exitFullscreen().catch(() => {});
+        }
+      } catch (e) {}
+    }
+  }
+  tvBtn.onclick = () => toggleTvMode();
+  exitTvBtn.onclick = () => toggleTvMode(false);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("tv-mode")) {
+      toggleTvMode(false);
+    }
+    if ((e.key === "f" || e.key === "F" || e.key === "t" || e.key === "T") && e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA") {
+      toggleTvMode();
+    }
+  });
+
+  // Simulation controls
+  document.getElementById("startSimBtn").onclick = () => {
+    unlockAudioEngine();
+    const startVal = document.getElementById("simStartTime").value || "08:58";
+    const speedVal = +document.getElementById("simSpeedSelect").value || 120;
+    simState = {
+      sec: timeToSec(startVal),
+      speed: speedVal
+    };
+    lastProcessedSec = simState.sec - 1;
+    document.getElementById("systemModeTag").textContent = `⏩ Simulyatsiya ×${speedVal}`;
+    document.getElementById("systemModeTag").style.color = "var(--wr)";
+    showToast(`Simulyatsiya boshlandi (${startVal} dan, ×${speedVal} tezlikda)`, "warning");
+  };
+
+  document.getElementById("stopSimBtn").onclick = () => {
+    simState = null;
+    lastProcessedSec = null;
+    document.getElementById("systemModeTag").textContent = "Real vaqt";
+    document.getElementById("systemModeTag").style.color = "var(--ac)";
+    showToast("Real vaqt rejimiga qaytildi", "success");
+  };
+
+  // Presets
+  document.getElementById("presetStandard").onclick = () => {
+    AppConfig.schedule = JSON.parse(JSON.stringify(DEFAULT_SCHEDULE));
+    AppConfig.anthemTime = "08:59";
+    saveConfig();
+    renderScheduleTable();
+    showToast("Standart 09:00 - 17:00 jadvali o'rnatildi", "success");
+  };
+
+  document.getElementById("presetWinter").onclick = () => {
+    const s = JSON.parse(JSON.stringify(DEFAULT_SCHEDULE));
+    let t = timeToSec("09:00");
+    s.forEach((slot) => {
+      const durSec = slot.type === "hw" ? 45 * 60 : 35 * 60;
+      slot.start = secToHm(t);
+      slot.end = secToHm(t + durSec);
+      t += durSec + (slot.breakMin * 60);
+    });
+    AppConfig.schedule = s;
+    saveConfig();
+    renderScheduleTable();
+    showToast("35 daqiqalik qisqartirilgan jadval o'rnatildi", "info");
+  };
+
+  document.getElementById("resetDefaultBtn").onclick = () => {
+    if (confirm("Standart jadvalga qaytarishni xohlaysizmi?")) {
+      AppConfig.schedule = JSON.parse(JSON.stringify(DEFAULT_SCHEDULE));
+      AppConfig.anthemTime = "08:59";
+      saveConfig();
+      renderScheduleTable();
+      showToast("Standart jadval tiklandi", "success");
+    }
+  };
+
+  // Backup Export / Import
+  const backupText = document.getElementById("backupTextarea");
+  document.getElementById("exportBackupBtn").onclick = () => {
+    backupText.value = JSON.stringify(AppConfig, null, 2);
+    backupText.select();
+    try {
+      navigator.clipboard.writeText(backupText.value);
+      showToast("Sozlamalar nusxalandi (Clipboard)", "success");
+    } catch (e) {
+      showToast("JSON matni yaratildi", "info");
+    }
+  };
+
+  document.getElementById("importBackupBtn").onclick = () => {
+    try {
+      const parsed = JSON.parse(backupText.value);
+      if (parsed && parsed.schedule) {
+        AppConfig = Object.assign({}, DEFAULT_SETTINGS, parsed);
+        saveConfig();
+        bindFormControls();
+        renderScheduleTable();
+        renderWeekDays();
+        showToast("Sozlamalar muvaffaqiyatli tiklandi!", "success");
+      } else {
+        alert("Noto'g'ri JSON format!");
+      }
+    } catch (e) {
+      alert("JSON formatida xatolik: " + e.message);
+    }
+  };
+}
+
+/* --------------------------------------------------------
+   8. JADVAL MUHARRIRI MODAL
+   -------------------------------------------------------- */
+const scheduleModal = document.getElementById("scheduleModal");
+const editScheduleBtn = document.getElementById("editScheduleBtn");
+const closeScheduleModal = document.getElementById("closeScheduleModal");
+const cancelScheduleModal = document.getElementById("cancelScheduleModal");
+const saveScheduleModal = document.getElementById("saveScheduleModal");
+const addScheduleSlotBtn = document.getElementById("addScheduleSlotBtn");
+const modalScheduleItems = document.getElementById("modalScheduleItems");
+
+let tempModalSchedule = [];
+
+editScheduleBtn.onclick = () => {
+  tempModalSchedule = JSON.parse(JSON.stringify(AppConfig.schedule));
+  renderModalEditor();
+  scheduleModal.classList.add("open");
+};
+
+closeScheduleModal.onclick = () => scheduleModal.classList.remove("open");
+cancelScheduleModal.onclick = () => scheduleModal.classList.remove("open");
+
+function renderModalEditor() {
+  modalScheduleItems.innerHTML = "";
+  tempModalSchedule.forEach((slot, index) => {
+    const itemCard = document.createElement("div");
+    itemCard.style.cssText = "padding:12px; border:1px solid var(--line); border-radius:14px; background:var(--input-bg);";
+    itemCard.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span style="font-weight:800; font-size:13px; color:var(--ac);">#${index + 1} — ${slot.name}</span>
+        <button class="btn ghost sm" style="color:var(--er);" data-del-index="${index}">O'chirish ✕</button>
+      </div>
+      <div class="form-grid">
+        <div>
+          <label class="field-label">Nomi</label>
+          <input type="text" class="mod-name" value="${slot.name}">
+        </div>
+        <div>
+          <label class="field-label">Boshlanish</label>
+          <input type="time" class="mod-start" value="${slot.start}">
+        </div>
+        <div>
+          <label class="field-label">Tugash</label>
+          <input type="time" class="mod-end" value="${slot.end}">
+        </div>
+        <div>
+          <label class="field-label">Turi</label>
+          <select class="mod-type">
+            <option value="lesson" ${slot.type === "lesson" ? "selected" : ""}>Dars</option>
+            <option value="lunch" ${slot.type === "lunch" ? "selected" : ""}>Tushlik</option>
+            <option value="tea" ${slot.type === "tea" ? "selected" : ""}>To'lma choy</option>
+            <option value="hw" ${slot.type === "hw" ? "selected" : ""}>Uyga vazifa</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label">Tanaffus (daq)</label>
+          <input type="number" min="0" max="120" class="mod-break" value="${slot.breakMin}">
+        </div>
+        <div>
+          <label class="field-label">Tanaffus nomi</label>
+          <input type="text" class="mod-break-name" value="${slot.breakName}">
+        </div>
+      </div>
+    `;
+
+    itemCard.querySelector("[data-del-index]").onclick = () => {
+      tempModalSchedule.splice(index, 1);
+      renderModalEditor();
+    };
+
+    const nameIn = itemCard.querySelector(".mod-name");
+    const startIn = itemCard.querySelector(".mod-start");
+    const endIn = itemCard.querySelector(".mod-end");
+    const typeIn = itemCard.querySelector(".mod-type");
+    const breakIn = itemCard.querySelector(".mod-break");
+    const breakNameIn = itemCard.querySelector(".mod-break-name");
+
+    nameIn.oninput = () => { slot.name = nameIn.value; };
+    startIn.oninput = () => { slot.start = startIn.value; };
+    endIn.oninput = () => { slot.end = endIn.value; };
+    typeIn.onchange = () => { slot.type = typeIn.value; };
+    breakIn.oninput = () => { slot.breakMin = +breakIn.value || 0; };
+    breakNameIn.oninput = () => { slot.breakName = breakNameIn.value; };
+
+    modalScheduleItems.appendChild(itemCard);
+  });
+}
+
+addScheduleSlotBtn.onclick = () => {
+  const nextNum = tempModalSchedule.length + 1;
+  let lastEnd = "17:00";
+  if (tempModalSchedule.length) {
+    lastEnd = tempModalSchedule[tempModalSchedule.length - 1].end;
+  }
+  const startSec = timeToSec(lastEnd) + 600;
+  const endSec = startSec + (45 * 60);
+
+  tempModalSchedule.push({
+    id: nextNum,
+    name: `${nextNum}-mashg'ulot`,
+    start: secToHm(startSec),
+    end: secToHm(endSec),
+    type: "lesson",
+    breakMin: 10,
+    breakName: "Tanaffus (10 daq)"
+  });
+  renderModalEditor();
+};
+
+saveScheduleModal.onclick = () => {
+  tempModalSchedule.sort((a, b) => timeToSec(a.start) - timeToSec(b.start));
+  tempModalSchedule.forEach((s, idx) => s.id = idx + 1);
+  AppConfig.schedule = tempModalSchedule;
+  saveConfig();
+  renderScheduleTable();
+  scheduleModal.classList.remove("open");
+  showToast("Dars jadvali yangilandi!", "success");
+};
+
+/* --------------------------------------------------------
+   9. DASTURNI ISHGA TUSHIRISH (INITIALIZATION)
+   -------------------------------------------------------- */
+
+/* --------------------------------------------------------
+   VOICELAB.UZ TEZKOR E'LON VA TUG'ILGAN KUN MODULI
+   -------------------------------------------------------- */
+let cachedGeneratedAudioUrl = null;
+window.pendingBreakAnnouncementUrl = null;
+
+const announcementModalBtn = document.getElementById("announcementModalBtn");
+const announcementModal = document.getElementById("announcementModal");
+const closeAnnouncementModal = document.getElementById("closeAnnouncementModal");
+const announcementText = document.getElementById("announcementText");
+const ttsVoiceSelect = document.getElementById("ttsVoiceSelect");
+const announcementIntroChime = document.getElementById("announcementIntroChime");
+const ttsStatusMsg = document.getElementById("ttsStatusMsg");
+const ttsPreviewPlayerBox = document.getElementById("ttsPreviewPlayerBox");
+const ttsPreviewAudio = document.getElementById("ttsPreviewAudio");
+const previewAnnouncementBtn = document.getElementById("previewAnnouncementBtn");
+const broadcastAnnouncementBtn = document.getElementById("broadcastAnnouncementBtn");
+const scheduleToNextBreakBtn = document.getElementById("scheduleToNextBreakBtn");
+const downloadAnnouncementMp3Btn = document.getElementById("downloadAnnouncementMp3Btn");
+
+if (announcementModalBtn) {
+  announcementModalBtn.onclick = () => {
+    announcementModal.classList.add("open");
+    loadDynamicVoices();
+  };
+}
+if (closeAnnouncementModal) {
+  closeAnnouncementModal.onclick = () => announcementModal.classList.remove("open");
+}
+
+function showTtsStatus(msg, type = 'info') {
+  if (!ttsStatusMsg) return;
+  ttsStatusMsg.style.display = 'block';
+  ttsStatusMsg.textContent = msg;
+  if (type === 'error') {
+    ttsStatusMsg.style.background = 'rgba(239, 68, 68, 0.15)';
+    ttsStatusMsg.style.color = '#ef4444';
+    ttsStatusMsg.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+  } else if (type === 'success') {
+    ttsStatusMsg.style.background = 'rgba(16, 185, 129, 0.15)';
+    ttsStatusMsg.style.color = '#10b981';
+    ttsStatusMsg.style.border = '1px solid rgba(16, 185, 129, 0.3)';
+  } else {
+    ttsStatusMsg.style.background = 'rgba(99, 102, 241, 0.15)';
+    ttsStatusMsg.style.color = 'var(--ink)';
+    ttsStatusMsg.style.border = '1px solid rgba(99, 102, 241, 0.3)';
+  }
+}
+
+function applyAnnouncementTemplate(type) {
+  if (!announcementText) return;
+  if (type === 'birthday') {
+    announcementText.value = "Bugun maktabimiz matematika fani o'qituvchisi Dilnoza opa Aliyevaning tavallud ayyomi! Maktab ma'muriyati va jamoasi nomidan ustozimizni chin dildan muborakbod etamiz! Sizga mustahkam sog'liq, oilaviy baxt va pedagogik faoliyatingizda ulkan zafarlar tilaymiz!";
+  } else if (type === 'meeting') {
+    announcementText.value = "Diqqat, e'lon! Hurmatli o'qituvchilar, bugun darslardan so'ng soat 15:00 da o'qituvchilar xonasida qisqa pedagogik yig'ilish bo'lib o'tadi. Barcha ustozlarning ishtirok etishi so'raladi.";
+  } else if (type === 'olympiad') {
+    announcementText.value = "Diqqat, quvonchli xabar! Bugun maktabimiz o'quvchilari fan olimpiadasida faxrli 1-o'rinni qo'lga kiritishdi! G'oliblarni va ularning ustozlarini barcha o'quvchilar nomidan qizg'in tabriklaymiz!";
+  } else if (type === 'duty') {
+    announcementText.value = "Hurmatli o'quvchilar! Tanaffus vaqtida maktab koridorlari va sinfxonalarda odob-axloq qoidalariga hamda tozalikka qat'iy rioya qilishingizni so'raymiz.";
+  } else if (type === 'clear') {
+    announcementText.value = "";
+    if (ttsStatusMsg) ttsStatusMsg.style.display = 'none';
+    if (ttsPreviewPlayerBox) ttsPreviewPlayerBox.style.display = 'none';
+  }
+  cachedGeneratedAudioUrl = null;
+}
+
+async function requestTtsGeneration() {
+  const text = (announcementText.value || '').trim();
+  if (!text) {
+    showTtsStatus("Iltimos, e'lon yoki tabrik matnini kiriting!", "error");
+    return null;
+  }
+  const voice = ttsVoiceSelect ? ttsVoiceSelect.value : 'voice_01J9NEUTRAL0000000000000001';
+  
+  showTtsStatus("VoiceLab AI orqali ovoz hosil qilinmoqda... Iltimos, kuting...", "info");
+  
+  try {
+    const res = await fetch('/api/tts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, voice })
+    });
+    const data = await res.json();
+    if (!data.success) {
+      throw new Error(data.error || "Ovoz yaratib bo'lmadi");
+    }
+    cachedGeneratedAudioUrl = data.audioUrl;
+    showTtsStatus("Ovoz tayyor! (" + (data.cached ? "Keshdan yuklandi" : "VoiceLab orqali yaratildi") + ")", "success");
+    return data.audioUrl;
+  } catch (err) {
+    showTtsStatus("Xatolik yuz berdi: " + err.message, "error");
+    return null;
+  }
+}
+
+if (previewAnnouncementBtn) {
+  previewAnnouncementBtn.onclick = async () => {
+    previewAnnouncementBtn.disabled = true;
+    previewAnnouncementBtn.textContent = "⏳ Yaratilmoqda...";
+    const audioUrl = await requestTtsGeneration();
+    previewAnnouncementBtn.disabled = false;
+    previewAnnouncementBtn.textContent = "🎧 Eshitib ko'rish";
+
+    if (audioUrl) {
+      ttsPreviewPlayerBox.style.display = 'block';
+      ttsPreviewAudio.src = audioUrl;
+      ttsPreviewAudio.play().catch(() => {});
+    }
+  };
+}
+
+if (broadcastAnnouncementBtn) {
+  broadcastAnnouncementBtn.onclick = async () => {
+    broadcastAnnouncementBtn.disabled = true;
+    broadcastAnnouncementBtn.textContent = "⏳ Tayyorlanmoqda...";
+    const audioUrl = await requestTtsGeneration();
+    broadcastAnnouncementBtn.disabled = false;
+    broadcastAnnouncementBtn.textContent = "📢 Hozir radioga e'lon qilish";
+
+    if (audioUrl) {
+      const sequence = [];
+      if (announcementIntroChime.checked) {
+        sequence.push(AUDIO_PATHS.freesound);
+      }
+      sequence.push(audioUrl);
+
+      playAudioSequence(sequence, 25000);
+      showToast("📢 E'lon maktab radiouzelida yangramoqda!", "success");
+      announcementModal.classList.remove("open");
+    }
+  };
+}
+
+if (scheduleToNextBreakBtn) {
+  scheduleToNextBreakBtn.onclick = async () => {
+    scheduleToNextBreakBtn.disabled = true;
+    scheduleToNextBreakBtn.textContent = "⏳ Tayyorlanmoqda...";
+    const audioUrl = await requestTtsGeneration();
+    scheduleToNextBreakBtn.disabled = false;
+    scheduleToNextBreakBtn.textContent = "⏰ Keyingi tanaffusda ijro etishga qo'shish";
+
+    if (audioUrl) {
+      window.pendingBreakAnnouncementUrl = audioUrl;
+      showToast("⏰ E'lon keyingi dars tugashi/tanaffusiga muvaffaqiyatli rejalashtirildi!", "success");
+      announcementModal.classList.remove("open");
+    }
+  };
+}
+
+if (downloadAnnouncementMp3Btn) {
+  downloadAnnouncementMp3Btn.onclick = async () => {
+    downloadAnnouncementMp3Btn.disabled = true;
+    downloadAnnouncementMp3Btn.textContent = "⏳ Tayyorlanmoqda...";
+    const audioUrl = await requestTtsGeneration();
+    downloadAnnouncementMp3Btn.disabled = false;
+    downloadAnnouncementMp3Btn.textContent = "💾 MP3 yuklab olish";
+
+    if (audioUrl) {
+      const a = document.createElement("a");
+      a.href = audioUrl;
+      a.download = "elon_tabrik_voicelab.mp3";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast("MP3 fayl yuklab olindi!", "success");
+    }
+  };
+}
+
+let voicesLoadedOnce = false;
+async function loadDynamicVoices() {
+  if (voicesLoadedOnce || !ttsVoiceSelect) return;
+  try {
+    const res = await fetch('/api/voices');
+    const data = await res.json();
+    if (data.success && data.voices && data.voices.length > 0) {
+      const vlVoices = data.voices.filter(v => v.engine === 'voicelab');
+      const edgeVoices = data.voices.filter(v => v.engine === 'edge');
+      
+      let html = '';
+      if (vlVoices.length > 0) {
+        html += '<optgroup label="🇺🇿 VoiceLab.uz (O\'zbek Milliy AI Diktorlari)">';
+        vlVoices.forEach(v => {
+          const selected = (v.id === 'voice_01J9NEUTRAL0000000000000001') ? 'selected' : '';
+          html += `<option value="${v.id}" ${selected}>${v.name}</option>`;
+        });
+        html += '</optgroup>';
+      }
+      if (edgeVoices.length > 0) {
+        html += '<optgroup label="⚡ Microsoft Edge Neural (100% Bepul Zaxira)">';
+        edgeVoices.forEach(v => {
+          html += `<option value="${v.id}">${v.name}</option>`;
+        });
+        html += '</optgroup>';
+      }
+      ttsVoiceSelect.innerHTML = html;
+      voicesLoadedOnce = true;
+    }
+  } catch (e) {
+    console.warn("Could not load dynamic voices:", e);
+  }
+}
+
+function initApp() {
+  bindFormControls();
+  renderWeekDays();
+  renderScheduleTable();
+
+  mainTick();
+  setInterval(mainTick, 250);
+
+  setInterval(() => {
+    renderTodayBellList();
+  }, 10000);
+}
+
+document.addEventListener("DOMContentLoaded", initApp);
+</script>
+</body>
+</html>

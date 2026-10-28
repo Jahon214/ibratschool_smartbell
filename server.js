@@ -365,7 +365,13 @@ const server = http.createServer(async (req, res) => {
     reqPath = '/index.html';
   }
 
-  const filePath = path.join(ROOT, reqPath);
+  let filePath = path.join(ROOT, reqPath);
+  if (!fs.existsSync(filePath)) {
+    const publicPath = path.join(ROOT, 'public', reqPath);
+    if (fs.existsSync(publicPath)) {
+      filePath = publicPath;
+    }
+  }
 
   if (!filePath.startsWith(ROOT)) {
     res.writeHead(403, { 'Content-Type': 'text/plain' });

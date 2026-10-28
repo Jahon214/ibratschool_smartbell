@@ -1422,14 +1422,21 @@ function getDurationMinutes(startSec, endSec) {
    6. voice_3_tushlik_tugadi.mp3 (3-voice)
    7. voice_4_kun_yakuni.mp3 (4-voice)
    -------------------------------------------------------- */
+function getAudioUrl(fileName) {
+  if (typeof window !== 'undefined' && window.location && window.location.protocol.startsWith('http')) {
+    return '/audio/' + fileName;
+  }
+  return 'audio/' + fileName;
+}
+
 const AUDIO_PATHS = {
-  bell: "audio/bell.mp3",
-  freesound: "audio/freesound.mp3",
-  anthem: "audio/madhiya.mp3",
-  voice1: "audio/voice_1_tanaffus.mp3",
-  voice2: "audio/voice_2_tushlik.mp3",
-  voice3: "audio/voice_3_tushlik_tugadi.mp3",
-  voice4: "audio/voice_4_kun_yakuni.mp3"
+  bell: getAudioUrl("bell.mp3"),
+  freesound: getAudioUrl("freesound.mp3"),
+  anthem: getAudioUrl("madhiya.mp3"),
+  voice1: getAudioUrl("voice_1_tanaffus.mp3"),
+  voice2: getAudioUrl("voice_2_tushlik.mp3"),
+  voice3: getAudioUrl("voice_3_tushlik_tugadi.mp3"),
+  voice4: getAudioUrl("voice_4_kun_yakuni.mp3")
 };
 
 let audioCtx = null;
